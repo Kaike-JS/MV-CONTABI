@@ -1,0 +1,235 @@
+/* Efeito para cards dos membros do time subirem ao passar o mouse */
+.card.p-3.shadow-sm,
+.card.p-3.shadow-sm.border-primary {
+	transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+}
+.card.p-3.shadow-sm:hover,
+.card.p-3.shadow-sm.border-primary:hover {
+	transform: translateY(-12px);
+	box-shadow: 0 8px 24px rgba(44, 62, 80, 0.13);
+}
+/* Estilos antigos da seção de membros removidos pois agora usa Bootstrap */
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f5f5f5;
+	color: #222;
+}
+
+header {
+	background-color: #000000;
+	color: #fff;
+	padding: 32px 0 16px 0;
+	text-align: center;
+}
+
+nav {
+	background-color: #533807;
+	padding: 10px 0;
+	text-align: center;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+
+nav ul li {
+	display: inline;
+	margin: 0 15px;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.2s;
+}
+
+nav ul li a:hover {
+	color: #ff7b00;
+}
+
+.site-main,
+main {
+	width: 100% !important;
+	max-width: none !important;
+	margin: 0 auto !important;
+	background: #fff;
+	padding: 32px;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+main.container {
+	max-width: 100% !important;
+	width: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	padding-top: 100px !important;
+}
+
+section {
+	margin-bottom: 32px;
+}
+
+/*.sobre-img {
+    width: 10px; /* Ajuste o tamanho 
+    -webkit-mask-image: radial-gradient(circle, black 50%, transparent 110%);
+    mask-image: radial-gradient(circle, black 50%, transparent 110%);
+} /* Efeito de máscara circular para a imagem da seção "Sobre" */
+
+
+.sobre-img {
+	max-width: 580px;
+	width: 100%;
+	height: auto;
+}
+
+@media (max-width: 768px) {
+	.sobre-img {
+		max-width: 220px;
+	}
+}
+
+h1, h2 {
+	color: #e7910f;
+}
+
+footer {
+	background-color: #000000;
+	color: #fff;
+	text-align: center;
+	padding: 16px 0;
+	position: static;
+	width: 100%;
+	margin-top: 48px;
+}
+
+/* ===== ESTILOS SOFISTICADOS PARA O FORMULÁRIO ===== */
+
+form {
+	background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+	padding: 60px !important;
+	border-radius: 20px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+	border: 1px solid rgba(231, 145, 15, 0.15);
+	transition: all 0.3s ease;
+	max-width: 1200px !important;
+	width: 95% !important;
+}
+
+form:hover {
+	box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+	border-color: rgba(231, 145, 15, 0.3);
+}
+
+form .form-label {
+	color: #2c3e50;
+	font-size: 1.05rem;
+	letter-spacing: 0.5px;
+	margin-bottom: 12px;
+	display: block;
+	font-weight: 600;
+}
+
+form .form-control {
+	border: 2px solid #e8e8e8;
+	border-radius: 12px;
+	padding: 16px 20px;
+	font-size: 1.05rem;
+	background-color: #ffffff;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	color: #2c3e50;
+	height: auto;
+	min-height: 50px;
+}
+
+form .form-control:focus {
+	border-color: #e7910f;
+	box-shadow: 0 0 0 4px rgba(231, 145, 15, 0.1);
+	background-color: #fafafa;
+	outline: none;
+}
+
+form .form-control::placeholder {
+	color: #9ca3af;
+	font-weight: 400;
+}
+
+form textarea.form-control {
+	resize: vertical;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	min-height: 180px;
+}
+
+form textarea.form-control:focus {
+	border-color: #e7910f;
+	box-shadow: 0 0 0 4px rgba(231, 145, 15, 0.1);
+}
+
+form .btn {
+	border-radius: 12px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	transition: all 0.3s ease;
+	padding: 18px 40px !important;
+	font-size: 1.1rem;
+	text-transform: uppercase;
+	border: 2px solid transparent;
+}
+
+form .btn-primary {
+	background: linear-gradient(135deg, #e7910f 0%, #d97d0a 100%);
+	border-color: #e7910f;
+	color: #fff;
+	box-shadow: 0 4px 15px rgba(231, 145, 15, 0.3);
+}
+
+form .btn-primary:hover {
+	background: linear-gradient(135deg, #d97d0a 0%, #c26a08 100%);
+	border-color: #d97d0a;
+	box-shadow: 0 8px 25px rgba(231, 145, 15, 0.4);
+	transform: translateY(-2px);
+}
+
+form .btn-primary:active {
+	transform: translateY(0);
+	box-shadow: 0 4px 12px rgba(231, 145, 15, 0.3);
+}
+
+/* Animação para entradas */
+@keyframes slideInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+form .col-md-6,
+form .col-12 {
+	animation: slideInUp 0.5s ease forwards;
+}
+
+form .col-md-6:nth-child(1) { animation-delay: 0.1s; }
+form .col-md-6:nth-child(2) { animation-delay: 0.2s; }
+form .col-12 { animation-delay: 0.3s; }
+
+/* Efeito de brilho no foco */
+form .row:nth-child(1) .col-md-6:nth-child(1),
+form .row:nth-child(2) .col-md-6:nth-child(1),
+form .row:nth-child(3) .col-12 {
+	opacity: 0;
+}
+
+form .form-control:focus {
+	position: relative;
+	z-index: 10;
+}
