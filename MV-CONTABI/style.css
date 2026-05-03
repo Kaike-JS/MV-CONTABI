@@ -41,7 +41,12 @@ body {
 }
 @media (max-width: 991px) {
     .logo-container img {
-        height: 55px !important;
+        height: 50px !important;
+    }
+
+    .navbar .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 
