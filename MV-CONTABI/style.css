@@ -39,7 +39,11 @@ body {
 .logo-container img:hover {
     transform: scale(1.05);
 }
-
+@media (max-width: 991px) {
+    .logo-container img {
+        height: 55px !important;
+    }
+}
 
 /* Animação e efeitos para o ícone do WhatsApp na navbar - Cria efeito de balanço ao passar o mouse */
 
