@@ -55,3 +55,46 @@ function toggleStack() {
     const stack = document.getElementById('photoStack');
     stack.classList.toggle('active');
 }
+
+
+// =========================================
+// ANIMAÇÕES DE ENTRADA — IntersectionObserver
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. Navbar entra imediatamente
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        requestAnimationFrame(() => navbar.classList.add('visible'));
+    }
+
+    // 2. Elementos do hero entram logo após
+    const heroSection = document.querySelector('.hero-imagem');(
+        'header .d-flex.align-items-center.flex-grow-1.w-100 > section'
+    );
+    const heroText = document.querySelector('header .container-fluid');
+
+    setTimeout(() => {
+        heroSection?.classList.add('visible');
+    }, 100);
+
+    setTimeout(() => {
+        heroText?.classList.add('visible');
+    }, 300);
+
+    // 3. Todos os .fade-in entram conforme aparecem na tela (scroll)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // anima só uma vez
+            }
+        });
+    }, {
+        threshold: 0.15,      // 15% visível já dispara
+        rootMargin: '0px 0px -40px 0px' // antecipa um pouco antes do elemento chegar
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+});
