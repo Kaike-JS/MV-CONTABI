@@ -15,6 +15,84 @@ body {
 	overflow-x: hidden;
 }
 
+/* =========================================
+   ANIMAÇÕES DE ENTRADA — ESTILO UNIASSELVI
+========================================= */
+
+/* Estado inicial: invisível e deslocado para baixo */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Estado visível: ativado via JS com IntersectionObserver */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delays escalonados para elementos entrarem um após o outro */
+.fade-in.delay-1 { transition-delay: 0.1s; }
+.fade-in.delay-2 { transition-delay: 0.2s; }
+.fade-in.delay-3 { transition-delay: 0.3s; }
+.fade-in.delay-4 { transition-delay: 0.4s; }
+.fade-in.delay-5 { transition-delay: 0.5s; }
+
+/* Navbar entra de cima para baixo */
+.navbar {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.navbar.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* DEPOIS — substitua por estes */
+.hero-imagem {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+}
+
+.hero-imagem.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hero-texto {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
+}
+
+.hero-texto.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Diferenciais entram de baixo, um por um */
+#diferenciais .diferenciais-col:nth-child(1) { transition-delay: 0.6s; }
+#diferenciais .diferenciais-col:nth-child(2) { transition-delay: 0.75s; }
+#diferenciais .diferenciais-col:nth-child(3) { transition-delay: 0.9s; }
+
+/* Respeita preferência do usuário por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .navbar,
+    header .d-flex.align-items-center.flex-grow-1.w-100 > section,
+    header .container-fluid {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+
+
 /* Ajuste da Barra de Navegação - Define a cor de fundo e padding da navbar */
 .navbar {
     background-color: #001328 !important;
