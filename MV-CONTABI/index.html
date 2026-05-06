@@ -14,30 +14,61 @@
 
 <nav id="sobre" class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
+
+        <!-- Logo -->
         <a class="navbar-brand logo-container" href="#">
             <img src="assets/mvcontabi.png" alt="MV Contabi" style="border-radius: 10px;">
         </a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+        <!-- Botão hamburguer (mobile) -->
+        <button class="navbar-toggler border-0" type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" 
+                aria-expanded="false" 
+                aria-label="Abrir menu">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- Menu -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center"> 
-                <li class="nav-item"><a class="nav-link" href="#sobre">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="#servicos">Especialidades</a></li>
-                <li class="nav-item"><a class="nav-link" href="#time">história</a></li>
-                <li class="nav-item"><a class="nav-link" href="#Diferenciais">Diferenciais</a></li>
-                <li class="nav-item"><a class="nav-link" href="#depoimentos">Feedback</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
-                
-              <li class="nav-item">
-                    <a href="https://wa.me/5574981080549" class="btn btn-whatsapp-nav fw-bold shadow-lg text-uppercase fs-6 d-inline-flex align-items-center">
-                        Falar no WhatsApp <i class="fa-brands fa-whatsapp ms-2 fs-4"></i>
+            <ul class="navbar-nav ms-auto align-items-center gap-lg-1">
+                <li class="nav-item">
+                    <a class="nav-link" href="#sobre">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#servicos">Especialidades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#time">História</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Diferenciais">Diferenciais</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#depoimentos">Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contato">Contato</a>
+                </li>
+
+                <!-- Separador visual (só desktop) -->
+                <li class="nav-item d-none d-lg-block">
+                    <span class="text-white-50 mx-2">|</span>
+                </li>
+
+                <!-- Botão WhatsApp -->
+                <li class="nav-item mt-2 mt-lg-0">
+                    <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." 
+                       target="_blank"
+                       class="btn btn-whatsapp-nav fw-bold shadow-lg text-uppercase fs-6 d-inline-flex align-items-center">
+                        Falar no WhatsApp 
+                        <i class="fa-brands fa-whatsapp ms-2 fs-4"></i>
                     </a>
                 </li>
             </ul>
         </div>
+
     </div>
 </nav>
 
