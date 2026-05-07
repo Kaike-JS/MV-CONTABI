@@ -39,18 +39,6 @@ body {
 .fade-in.delay-4 { transition-delay: 0.4s; }
 .fade-in.delay-5 { transition-delay: 0.5s; }
 
-/* Navbar entra de cima para baixo */
-.navbar {
-    opacity: 0;
-    transform: translateY(-30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.navbar.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* DEPOIS — substitua por estes */
 .hero-imagem {
     opacity: 0;
@@ -90,7 +78,6 @@ body {
         transition: none !important;
     }
 }
-
 
 
 /* Ajuste da Barra de Navegação - Define a cor de fundo e padding da navbar */
@@ -242,8 +229,9 @@ body {
    HEADER
 ========================================= */
 header {
+    position: relative;
     background-color: #001328;
-    padding: 32px 0 16px 0;
+    padding: 32px 0 220px 0;
     text-align: center;
     width: 100%;
 }
@@ -265,13 +253,6 @@ header p {
     margin-top: 16px;
 }
 
-/* =========================================
-   IMAGEM SOBRE (máscara circular)
-========================================= */
-.sobre-img {
-    -webkit-mask-image: radial-gradient(circle, black 50%, transparent 110%);
-    mask-image: radial-gradient(circle, black 50%, transparent 110%);
-}
 
 /* =========================================
    HOVER CARDS GENÉRICOS
@@ -1073,3 +1054,759 @@ section {
             justify-content: center;
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* =========================================
+   CARD HERO — MARCOS VENICIUS
+========================================= */
+.hero-visual-container {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10px;
+    flex-shrink: 0;
+}
+
+.mv-card {
+    position: relative;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 16px;
+    padding: 16px;
+    width: 200px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+}
+
+/* Tag de credibilidade */
+.mv-card-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #d4af37;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mv-tag-dot {
+    width: 6px;
+    height: 6px;
+    background: #d4af37;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Imagem */
+.mv-card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.mv-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Barra de carregamento abaixo da imagem */
+.mv-scan-line {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin-top: 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.18);
+    box-shadow: inset 0 0 8px rgba(212, 175, 55, 0.15);
+}
+
+.mv-scan-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 44%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, #d4af37 30%, #f5d37e 70%, transparent);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+    animation: loadingBar 2.6s ease-in-out infinite;
+}
+
+@keyframes loadingBar {
+    0%   { transform: translateX(-110%); }
+    50%  { transform: translateX(75%); }
+    100% { transform: translateX(250%); }
+}
+
+/* Badges laterais */
+.mv-badge {
+    position: absolute;
+    padding: 7px 12px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.mv-badge small {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.6;
+}
+
+.mv-badge strong {
+    font-size: 10px;
+}
+
+.mv-badge-top {
+    top: 70px;
+    right: -90px;
+    background: #fff;
+    color: #001328;
+    border-left: 3px solid #d4af37;
+}
+
+.mv-badge-bottom {
+    bottom: 60px;
+    left: -90px;
+    background: #001328;
+    color: #fff;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-bottom: 3px solid #d4af37;
+}
+
+/* Métricas */
+.mv-card-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 4px 0;
+}
+
+.mv-stat {
+    text-align: center;
+    flex: 1;
+}
+
+.mv-stat strong {
+    display: block;
+    color: #d4af37;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.mv-stat span {
+    display: block;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 9px;
+    margin-top: 2px;
+}
+
+.mv-stat-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+/* Efeito 3D no hover (mouse) */
+@media (min-width: 992px) {
+    .mv-card:hover {
+        box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+    }
+}
+
+/* Mobile: card menor e centralizado */
+@media (max-width: 991.98px) {
+    .mv-card {
+        width: 160px;
+    }
+
+    .mv-card-img {
+        height: 150px;
+    }
+
+    .mv-badge-top,
+    .mv-badge-bottom {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilização do Novo Header (Fusão) */
+.hero { 
+    background: linear-gradient(135deg, #001328 0%, #002050 60%, #001a40 100%); 
+    padding: 0 16px 16px; 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 20px; 
+    min-height: 86vh; 
+    position: relative; 
+    overflow: hidden; 
+}
+
+.hero-left { flex: 1; z-index: 1; text-align: left;}
+
+.hero-tag { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 6px; 
+    background: rgba(212,175,55,0.12); 
+    border: 1px solid rgba(212,175,55,0.3); 
+    color: #d4af37; 
+    padding: 6px 16px; 
+    border-radius: 20px; 
+    font-size: 11px; 
+    font-weight: 500; 
+    letter-spacing: 1px; 
+    margin-bottom: 24px;
+}
+
+.hero-tag-dot { width: 8px; height: 8px; background: #d4af37; border-radius: 50%; }
+
+.hero h1 em { color: #d4af37; font-style: normal; }
+
+.btn-gold { 
+    background: #d4af37; 
+    color: #001328; 
+    padding: 12px 28px; 
+    border-radius: 8px; 
+    font-weight: 600; 
+    transition: 0.3s; 
+}
+
+.btn-gold:hover { background: #f5d37e; transform: translateY(-3px); }
+
+.btn-outline { 
+    background: transparent; 
+    color: #fff; 
+    border: 1px solid rgba(255,255,255,0.25); 
+    padding: 12px 28px; 
+    border-radius: 8px; 
+    transition: 0.3s; 
+}
+
+/* Responsividade para o novo Hero */
+@media (max-width: 991px) {
+    .hero { flex-direction: column; text-align: center; padding-top: 40px; }
+    .hero-left { text-align: center; }
+    .hero-actions { justify-content: center; }
+    #diferenciais { position: relative !important; margin-top: 40px !important; }
+}
+
+/* Container Principal do Hero */
+.hero-section {
+    background: linear-gradient(135deg, #001328 0%, #002050 60%, #001a40 100%);
+    width: 100%;
+    padding: 38px 6% 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 82vh;
+    gap: 50px;
+}
+
+/* Tipografia e Cores */
+.hero-left {
+    flex: 0 1 760px;
+}
+
+.hero-right {
+    flex: 0 0 auto;
+    z-index: 1;
+}
+
+.hero-left h1 {
+    max-width: 760px;
+}
+
+.hero-left h1 em {
+    color: #d4af37; /* Dourado da MV Contabi */
+    font-style: normal;
+}
+
+.hero-left p {
+    color: #b0b0b0;
+    max-width: 600px;
+}
+
+/* Botões Customizados */
+.btn-gold {
+    background: #d4af37;
+    color: #001328;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn-gold:hover {
+    background: #f1c40f;
+    transform: translateY(-3px);
+}
+
+.btn-outline-white {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+/* O Card da Direita (Glassmorphism) */
+.hero-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 46px;
+    border-radius: 24px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+.mv-card-img-wrap {
+    width: 250px;
+    height: auto;
+    border-radius: 15px;
+    overflow: visible;
+    position: relative;
+    margin: 0 auto 20px;
+}
+
+.mv-card-img {
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+}
+
+/* Barra de carregamento abaixo da imagem */
+.mv-scan-line {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin-top: 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.18);
+    box-shadow: inset 0 0 8px rgba(212, 175, 55, 0.15);
+}
+
+.mv-scan-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 44%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, #d4af37 30%, #f5d37e 70%, transparent);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+    animation: loadingBar 2.6s ease-in-out infinite;
+}
+
+/* Badges Flutuantes */
+.badge-scan, .badge-scan2 {
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    padding: 8px 15px;
+    border-radius: 10px;
+    border-left: 3px solid #d4af37;
+    font-size: 10px;
+    z-index: 2;
+}
+
+.badge-scan { top: 20px; left: -20px; }
+.badge-scan2 { bottom: 80px; right: -20px; }
+
+/* Stats no Card */
+.hero-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.stat-mini {
+    text-align: center;
+}
+
+.stat-mini strong {
+    display: block;
+    color: #d4af37;
+    font-size: 1.2rem;
+}
+
+.stat-mini span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #ccc;
+}
+
+@media (max-width: 991px) {
+    .hero-section {
+        padding-top: 32px;
+        padding-bottom: 56px;
+    }
+
+    .hero-card {
+        padding: 30px;
+    }
+
+    .mv-card-img-wrap {
+        width: min(230px, 78vw);
+    }
+
+    .mv-card-img {
+        height: 280px;
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE FINAL — SOMENTE HEADER
+========================================= */
+@media (max-width: 991.98px) {
+    .navbar .container-fluid {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+    }
+
+    .logo-container img {
+        height: 64px !important;
+        margin-right: 0 !important;
+    }
+
+    .navbar-toggler {
+        margin-left: auto;
+        border-color: rgba(212, 175, 55, 0.55);
+        padding: 8px 10px;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: 0 0 0 0.15rem rgba(212, 175, 55, 0.25);
+    }
+
+    .navbar-collapse {
+        padding: 14px 0 8px;
+    }
+
+    .navbar-nav {
+        align-items: stretch !important;
+        gap: 6px;
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin-left: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px 12px;
+    }
+
+    .btn-whatsapp-nav {
+        width: 100%;
+        justify-content: center;
+        margin: 8px 0 0 !important;
+        padding: 12px 18px !important;
+        border: 0 !important;
+        border-radius: 12px !important;
+    }
+
+    .hero {
+        display: block;
+        min-height: auto;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .hero-section {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: auto;
+        padding: 36px 18px 32px;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .hero-left,
+    .hero-right {
+        flex: none;
+        width: 100%;
+        max-width: 680px;
+    }
+
+    .hero-right.hero-imagem {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .hero-left {
+        text-align: center;
+    }
+
+    .hero-left h1 {
+        max-width: 680px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2.35rem !important;
+        line-height: 1.18;
+    }
+
+    .hero-left p {
+        max-width: 560px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.1rem !important;
+        line-height: 1.55;
+        padding: 0 !important;
+    }
+
+    .hero-tag {
+        max-width: 100%;
+        justify-content: center;
+        white-space: normal;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 330px;
+        margin: 0 auto;
+        padding: 30px;
+    }
+
+    .badge-scan {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%);
+        width: max-content;
+        max-width: calc(100% - 24px);
+        text-align: left;
+    }
+
+    .mv-card-img-wrap {
+        width: min(230px, 76vw);
+    }
+
+    .mv-card-img {
+        height: 280px;
+    }
+
+    #diferenciais {
+        position: relative !important;
+        inset: auto !important;
+        width: 100% !important;
+        margin: 22px 0 0 !important;
+        padding: 0 18px 32px !important;
+    }
+
+    #diferenciais .container {
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+
+    #diferenciais .row,
+    #diferenciais .row.g-0 {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        gap: 12px !important;
+        margin: 0 auto !important;
+        max-width: 360px;
+        width: 100%;
+    }
+
+    #diferenciais .diferenciais-col {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    #diferenciais .diferenciais-card {
+        padding: 18px 16px;
+        border-right: 0 !important;
+    }
+
+    #diferenciais .diferenciais-card i {
+        font-size: 2.1rem;
+        margin-bottom: 0.75rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    header.hero {
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .navbar .container-fluid {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .logo-container img {
+        height: 52px !important;
+    }
+
+    .hero-section {
+        padding: 28px 14px 28px;
+        gap: 24px;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden;
+    }
+
+    .hero-tag {
+        padding: 6px 12px;
+        font-size: 10px;
+        letter-spacing: 0.5px;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    header.hero .hero-left {
+        width: 100% !important;
+        max-width: 320px !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    header.hero .hero-left h1 {
+        width: 100% !important;
+        max-width: 300px !important;
+        font-size: 1.45rem !important;
+        line-height: 1.2;
+        margin-bottom: 18px !important;
+        overflow-wrap: break-word;
+    }
+
+    header.hero .hero-left p {
+        width: 100% !important;
+        max-width: 300px !important;
+        font-size: 1rem !important;
+        overflow-wrap: break-word;
+    }
+
+    .btn-gold {
+        width: 100%;
+        max-width: 260px;
+        padding: 13px 18px;
+        text-align: center;
+    }
+
+    .hero-card {
+        max-width: 280px;
+        padding: 24px;
+    }
+
+    .badge-scan {
+        top: 14px !important;
+        font-size: 9px;
+        padding: 7px 11px;
+    }
+
+    .mv-card-img-wrap {
+        width: min(210px, 72vw);
+    }
+
+    .mv-card-img {
+        height: 250px;
+    }
+
+    .hero-stats {
+        gap: 8px;
+    }
+
+    .stat-mini strong {
+        font-size: 1rem;
+    }
+
+    .stat-mini span {
+        font-size: 0.62rem;
+    }
+
+    #diferenciais {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+        overflow: hidden;
+    }
+
+    #diferenciais .row,
+    #diferenciais .row.g-0 {
+        max-width: 300px;
+    }
+}
