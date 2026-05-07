@@ -6,103 +6,96 @@
     <title>MV Contabi - Assessoria Contábil</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav id="sobre" class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
-
-        <!-- Logo -->
         <a class="navbar-brand logo-container" href="#">
             <img src="assets/mvcontabi.png" alt="MV Contabi" style="border-radius: 10px;">
         </a>
-
-        <!-- Botão hamburguer (mobile) -->
-        <button class="navbar-toggler border-0" type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#navbarNav" 
-                aria-controls="navbarNav" 
-                aria-expanded="false" 
-                aria-label="Abrir menu">
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menu -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center gap-lg-1">
-                <li class="nav-item">
-                    <a class="nav-link" href="#sobre">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#servicos">Especialidades</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#time">História</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#Diferenciais">Diferenciais</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#depoimentos">Feedback</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contato">Contato</a>
-                </li>
-
-                <!-- Separador visual (só desktop) -->
-                <li class="nav-item d-none d-lg-block">
-                    <span class="text-white-50 mx-2">|</span>
-                </li>
-
-                <!-- Botão WhatsApp -->
-                <li class="nav-item mt-2 mt-lg-0">
-                    <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." 
-                       target="_blank"
-                       class="btn btn-whatsapp-nav fw-bold shadow-lg text-uppercase fs-6 d-inline-flex align-items-center">
-                        Falar no WhatsApp 
-                        <i class="fa-brands fa-whatsapp ms-2 fs-4"></i>
+            <ul class="navbar-nav ms-auto align-items-center"> 
+                <li class="nav-item"><a class="nav-link" href="#sobre">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="#servicos">Especialidades</a></li>
+                <li class="nav-item"><a class="nav-link" href="#time">história</a></li>
+                <li class="nav-item"><a class="nav-link" href="#Diferenciais">Diferenciais</a></li>
+                <li class="nav-item"><a class="nav-link" href="#depoimentos">Feedback</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                
+              <li class="nav-item">
+                    <a href="https://wa.me/5574981080549" class="btn btn-whatsapp-nav fw-bold shadow-lg text-uppercase fs-6 d-inline-flex align-items-center">
+                        Falar no WhatsApp <i class="fa-brands fa-whatsapp ms-2 fs-4"></i>
                     </a>
                 </li>
             </ul>
         </div>
-
     </div>
 </nav>
 
-<header class="text-center py-10 d-flex flex-column align-items-center fade-in" style="min-height: 90vh;">
+<header class="hero">
+<section class="hero-section">
+    <div class="hero-left fade-in">
+        <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            Escritório premiado — Caldeirão Grande/BA
+        </div>
+        
+        <h1 class="display-5 fw-bold text-light mb-4">
+            Contabilidade <em>simples e eficiente</em> para o seu negócio.
+        </h1>
+        
+        <p class="fs-4 mb-4">
+            A MV Contabi oferece soluções contábeis completas para MEI, profissionais liberais e empresas que buscam crescimento com segurança.
+        </p>
 
-    <div class="d-flex align-items-center flex-grow-1 w-100">
-        <section class="mb-5 me-md-5">
-            <div class="row align-items-center"> 
-                <figure class="col-md-5 mx-auto text-center" style="width: 100%; max-width: 880px;">
-                    <img src="assets/banana.jpg" alt="Empresário feliz usando celular - MV Contabi" class="img-fluid sobre-img rounded shadow-lg mb-4 mb-md-0 ms-md-5">
-                </figure>
-            </div>
-        </section>
-
-        <div class="container-fluid px-4 px-lg-5">
-            <h1 class="display-5 fw-bold text-light mb-4">
-                Contabilidade simples e eficiente para o seu negócio.
-            </h1>
-            
-            <p class="fs-4 mb-2 mx-auto" style="max-width: 800px;">
-                A MV Contabi oferece soluções contábeis completas para MEI, profissionais liberais e empresas que buscam crescimento com segurança.
-            </p>
-            <div class="mt-auto mb-4">
-                <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20desejo%20solicitar%20um%20or%C3%A7amento." class="btn btn-outline-light btn-lg mt-5 px-5 py-3 fw-bold shadow-lg text-uppercase"target="_blank">
-                    Solicitar Orçamento <i class="fas fa-file-invoice-dollar ms-2"></i>
-                </a>
-            </div>
+        <div class="hero-actions">
+            <a href="https://wa.me/5574981080549" class="btn-gold" target="_blank">
+                Solicitar Orçamento <i class="fas fa-file-invoice-dollar ms-2"></i>
+            </a>
         </div>
     </div>
 
-    <!-- Diferenciais integrado abaixo do container -->
-    <section id="diferenciais" class="w-100 py-3 rounded mt-0 bg-transparent" style="background: transparent; margin-top: -1.1rem;">
+    <div class="hero-right hero-imagem fade-in">
+        <div class="hero-card">
+            <div class="badge-scan">
+                <small>STATUS</small>
+                <strong>● SUA CONTABILIDADE DE CONFIANÇA</strong>
+            </div>
+
+            <div class="mv-card-img-wrap">
+                <img src="assets/venicius.jpeg" alt="Marcos Venicius" class="mv-card-img">
+                <div class="mv-scan-line"></div>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-mini">
+                    <strong>+200</strong>
+                    <span>Clientes</span>
+                </div>
+                <div class="stat-mini">
+                    <strong>8+</strong>
+                    <span>Anos</span>
+                </div>
+                <div class="stat-mini">
+                    <strong>2x</strong>
+                    <span>Premiado</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="diferenciais" class="w-100 py-3 rounded mt-0 bg-transparent" style="background: transparent; position: absolute; bottom: 0; left: 0;">
         <div class="container text-center">
-          <div class="row g-0 justify-content-center align-items-center">
+            <div class="row g-0 justify-content-center align-items-center">
                 <article class="col-auto diferenciais-col">
                     <div class="card h-100 border-0 shadow-sm bg-transparent diferenciais-card">
                         <div class="card-body">
@@ -130,7 +123,6 @@
             </div>
         </div>
     </section>
-
 </header>
 
 <main class="container">
@@ -544,6 +536,7 @@
 
 
 
+
 <section id="contato" class="py-120 fade-in">
     <div class="container">
         <!-- Header de Contato -->
@@ -642,7 +635,7 @@
 </section>
     </main>
 
- <footer class="footer-premium fade-in delay-4">
+ <footer class="footer-premium">
     <div class="container">
         <div class="row gy-5">
             <!-- Coluna 1: Branding -->
@@ -657,10 +650,10 @@
             <div class="col-lg-2 col-md-6 offset-lg-1">
                 <h5 class="footer-title">Navegação</h5>
                 <ul class="footer-links">
-                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Início</a></li>
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#diferenciais">Diferenciais</a></li>
+                    <li><a href="#Diferenciais">Diferenciais</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </div>
@@ -705,7 +698,7 @@
                 </div>
 
                  <div class="col-md-4 text-center text-md-start">
-                    <p class="mb-0">2026 <span class="fw-bold">Desenvolvido por</span> Pedro Kaike .</p>
+                    <p class="mb-0"><span class="fw-bold">Desenvolvido por</span> Pedro Kaike.</p>
                 </div>
 
                 <div class="col-md-4    text-center text-md-end mt-3 mt-md-0">
