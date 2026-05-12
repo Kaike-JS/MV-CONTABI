@@ -1,51 +1,101 @@
-/* Estilos globais para o corpo da página */
+/* ===========================================
+   MV CONTABI — STYLE.CSS
+   Sequência: Global → Navbar → Hero → Seções → Footer
+=========================================== */
+
+/* =========================================
+   0. RESET & GLOBAL
+========================================= */
 html {
     box-sizing: border-box;
     overflow-x: hidden;
 }
-*, *::before, *::after {
-    box-sizing: inherit;
+*, *::before, *::after { box-sizing: inherit; }
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
+
 body {
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0;
-	padding: 0;
-	background-color: #f5f5f5;
-	color: #e0e0e0;
-	overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #e0e0e0;
+    overflow-x: hidden;
+}
+
+img, svg, video, canvas { max-width: 100%; }
+
+h1, h2, h3, h4, h5, h6,
+p, a, span, small, strong, label, button {
+    overflow-wrap: break-word;
+}
+
+.container,
+.container-fluid,
+.row,
+[class*="col-"],
+.card,
+.navbar-collapse,
+.hero-left,
+.hero-right {
+    min-width: 0;
+}
+
+
+/* =========================================
+   1. ANIMAÇÕES GLOBAIS
+========================================= */
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+@keyframes loadingBar {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(430%); }
+}
+
+@keyframes balancear {
+    0%   { transform: translateY(-5px) rotate(0deg); }
+    25%  { transform: translateY(-5px) rotate(-10deg); }
+    50%  { transform: translateY(-5px) rotate(10deg); }
+    75%  { transform: translateY(-5px) rotate(-10deg); }
+    100% { transform: translateY(-5px) rotate(0deg); }
+}
+
+@keyframes shimmerGold {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
 }
 
 /* =========================================
-   ANIMAÇÕES DE ENTRADA — ESTILO UNIASSELVI
+   2. FADE-IN — ANIMAÇÕES DE ENTRADA
 ========================================= */
-
-/* Estado inicial: invisível e deslocado para baixo */
 .fade-in {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.7s ease, transform 0.7s ease;
 }
-
-/* Estado visível: ativado via JS com IntersectionObserver */
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Delays escalonados para elementos entrarem um após o outro */
 .fade-in.delay-1 { transition-delay: 0.1s; }
 .fade-in.delay-2 { transition-delay: 0.2s; }
 .fade-in.delay-3 { transition-delay: 0.3s; }
 .fade-in.delay-4 { transition-delay: 0.4s; }
 .fade-in.delay-5 { transition-delay: 0.5s; }
 
-/* DEPOIS — substitua por estes */
 .hero-imagem {
     opacity: 0;
     transform: translateX(-50px);
     transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
 }
-
 .hero-imagem.visible {
     opacity: 1;
     transform: translateX(0);
@@ -56,18 +106,11 @@ body {
     transform: translateX(50px);
     transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
 }
-
 .hero-texto.visible {
     opacity: 1;
     transform: translateX(0);
 }
 
-/* Diferenciais entram de baixo, um por um */
-#diferenciais .diferenciais-col:nth-child(1) { transition-delay: 0.6s; }
-#diferenciais .diferenciais-col:nth-child(2) { transition-delay: 0.75s; }
-#diferenciais .diferenciais-col:nth-child(3) { transition-delay: 0.9s; }
-
-/* Respeita preferência do usuário por menos movimento */
 @media (prefers-reduced-motion: reduce) {
     .fade-in,
     .navbar,
@@ -80,1283 +123,152 @@ body {
 }
 
 
-/* Ajuste da Barra de Navegação - Define a cor de fundo e padding da navbar */
+/* =========================================
+   3. NAVBAR
+========================================= */
 .navbar {
     background-color: #001328 !important;
     padding: 10px 0;
 }
-#Diferenciais {
- background-color: #001328 !important;
- width: 100%;
- max-width: 100%;
-}
 
-/* Ajuste Inteligente da Imagem/Logo - Estiliza o container da logo com tamanho, efeitos e transição */
 .logo-container img {
-    margin-right: 10px !important;
-    width: auto;
-    height: 150px;
-    object-fit: contain;
-    transition: transform 0.3s;
-    image-rendering: -webkit-optimize-contrast;
-}
-
-.logo-container img:hover {
-    transform: scale(1.05);
-}
-@media (max-width: 991px) {
-    .logo-container img {
-        height: 50px !important;
-    }
-
-    .navbar .container-fluid {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-}
-
-
-/* Animação e efeitos para o ícone do WhatsApp na navbar - Cria efeito de balanço ao passar o mouse */
-
-/* 1. Define a animação de balanço (shake) */
-@keyframes balancear {
-    0% { transform: translateY(-5px) rotate(0deg); }
-    25% { transform: translateY(-5px) rotate(-10deg); }
-    50% { transform: translateY(-5px) rotate(10deg); }
-    75% { transform: translateY(-5px) rotate(-10deg); }
-    100% { transform: translateY(-5px) rotate(0deg); }
-}
-
-/* 2. Estado normal do ícone (suave) */
-.btn-whatsapp-nav i {
+    height: clamp(72px, 1vw, 102px);
+    border-radius: 10px;
     transition: transform 0.3s ease;
-    display: inline-block; /* Necessário para transformações funcionarem */
+}
+.logo-container img:hover { transform: scale(1.05); }
+
+.navbar .container-fluid {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
-/* 3. Efeito ao passar o mouse no botão */
-.btn-whatsapp-nav:hover i {
-    animation: balancear 0.5s ease-in-out infinite;
-}
+.navbar-nav { gap: clamp(10px, 1vw, 10px); }
 
-/* Estilos para os links da navbar - Define cor branca, negrito e efeitos de transição */
 .navbar-nav .nav-link {
-    color: #ffffff !important; /* Branco Puro */
-    font-weight: 700 !important; /* Bem forte */
+    color: #ffffff !important;
+    font-weight: 700 !important;
     text-transform: capitalize;
     opacity: 1 !important;
     margin: 0 5px;
     transition: color 0.3s ease;
 }
 
-/* Efeitos de hover para os itens da navbar - Faz os links subirem e aplicam gradiente dourado */
 .navbar-nav .nav-item .nav-link {
-    display: inline-block; /* Necessário para o transform funcionar bem */
+    display: inline-block;
     color: #ffffff !important;
     font-weight: 700;
-    transition: all 0.3s ease; /* Faz a subida ser suave, não um pulo seco */
+    transition: all 0.3s ease;
 }
 
-.navbar-nav .nav-item .nav-link:hover, #contato h2 {
-    /* 1. Efeito de Subir */
-    transform: translateY(-5px); /* O item sobe 5 pixels */
-
-    /* 2. Efeito Dourado Degradê (Truque do Clip) */
+.navbar-nav .nav-item .nav-link:hover {
+    transform: translateY(-5px);
     background: linear-gradient(135deg, #F5D37E 0%, #C29F55 50%, #8E7341 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    
-    /* 3. Brilho extra (opcional) */
     text-shadow: 0px 4px 10px rgba(194, 159, 85, 0.3);
 }
-/* Ajustes de espaçamento na navbar - Define padding lateral e margens entre itens */
-/* 1. Dá um respiro nas laterais da barra toda para não colar no vidro da tela */
-.navbar .container-fluid {
-    padding-left: 50px;  /* Distância da Logo para a borda esquerda */
-    padding-right: 50px; /* Distância do Botão para a borda direita */
-}
 
-/* 2. Aumenta a distância ENTRE os itens do menu (Início, Sobre, etc) */
-.navbar-nav .nav-item {
-    margin-left: 20px; /* Cria um espaço entre cada palavra do menu */
-}
+.navbar-nav .nav-item { margin-left: 20px; }
 
-/* 3. Ajuste específico para o botão de WhatsApp não ficar colado no link 'Contato' */
+/* Botão WhatsApp Navbar */
 .btn-whatsapp-nav {
-    margin-left: 35px !important; /* Espaço extra antes do botão verde */
-}
-
-/* Ajustes responsivos para telas menores (celulares) - Reduz padding e ajusta margens */
-@media (max-width: 991px) {
-    .navbar .container-fluid {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    .navbar-nav .nav-item {
-        margin-left: 0;
-        margin-bottom: 10px; /* Espaço vertical no celular */
-    }
-    .btn-whatsapp-nav {
-        margin-left: 0 !important;
-    }
-}
-
-/* Estilo específico para o botão do WhatsApp no menu - Define cor verde oficial e efeitos */
-.btn-whatsapp-nav {
-    background-color: #25d366 !important; /* Verde oficial do WhatsApp */
-    color: #fff !important;              /* Texto sempre branco */
-    border: 10px solid transparent;           /* Borda transparente para manter o tamanho */
+    background-color: #25d366 !important;
+    color: #fff !important;
+    border: 10px solid transparent;
     transition: transform 0.2s, background-color 0.2s;
-	border-radius: 20px !important;
+    border-radius: 20px !important;
+    margin-left: 35px !important;
+    white-space: nowrap;
 }
-
-/* Efeito de clique ou hover para não ficar estático demais */
 .btn-whatsapp-nav:hover {
-    transform: scale(1.05);               /* Leve aumento no tamanho */
+    transform: scale(1.05);
     color: #fff !important;
 }
+.btn-whatsapp-nav i { transition: transform 0.3s ease; display: inline-block; }
+.btn-whatsapp-nav:hover i { animation: balancear 0.5s ease-in-out infinite; }
 
-
-/* Ajuste adicional para o espaçamento no mobile (Bootstrap) - Adiciona margem superior ao botão */
-@media (max-width: 991px) {
+/* Navbar — Responsivo ≤ 1320px */
+@media (max-width: 1320px) and (min-width: 992px) {
+    .navbar .container-fluid { padding-left: 20px; padding-right: 20px; }
+    .logo-container img { height: clamp(88px, 8vw, 110px); }
+    .navbar-nav { gap: 5px; }
+    .navbar-nav .nav-link { font-size: 0.92rem; padding-left: 0.25rem; padding-right: 0.25rem; }
     .btn-whatsapp-nav {
-        margin-top: 10px;
-        display: inline-block;
+        border-width: 6px !important;
+        border-radius: 14px !important;
+        font-size: 0.82rem !important;
+        margin-left: 6px !important;
     }
 }
 
-/* =========================================
-   HEADER
-========================================= */
-header {
-    position: relative;
-    background-color: #001328;
-    padding: 32px 0 220px 0;
-    text-align: center;
-    width: 100%;
+@media (max-width: 1100px) and (min-width: 992px) {
+    .logo-container img { height: 82px; }
+    .navbar-nav .nav-link { font-size: 0.86rem; }
+    .btn-whatsapp-nav { padding-left: 10px !important; padding-right: 10px !important; }
 }
 
-header .container-fluid {
-    max-width: 100%;
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-header h1 {
-    color: #fff;
-}
-
-header p {
-    color: #b1abab;
-    font-size: 1.2rem;
-    margin-top: 16px;
-}
-
-
-/* =========================================
-   HOVER CARDS GENÉRICOS
-========================================= */
-.card.p-3.shadow-sm,
-.card.p-3.shadow-sm.border-primary {
-    transition: transform 0.2s cubic-bezier(.4, 2, .6, 1), box-shadow 0.2s;
-}
-
-.card.p-3.shadow-sm:hover,
-.card.p-3.shadow-sm.border-primary:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 8px 24px rgba(44, 62, 80, 0.13);
-}
-
-section {
-    margin-bottom: 32px;
-}
-
-/* =========================================
-   SEÇÃO DIFERENCIAIS — BASE (mobile-first)
-========================================= */
-#diferenciais {
-    margin-top: -1.2rem;
-}
-
-#diferenciais .container {
-    max-width: 100%;
-    margin: 0 auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-#diferenciais .row {
-    justify-content: center;
-    gap: 2.5rem;
-}
-
-#diferenciais .diferenciais-col {
-    flex: 0 0 auto;
-    width: auto;
-    margin-right: 0.4rem;
-}
-
-#diferenciais .diferenciais-col:last-child {
-    margin-right: 0;
-}
-
-.diferenciais-col {
-    position: relative;
-}
-
-/* Linha separadora vertical entre cards (desktop) */
-.diferenciais-col:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 20%;
-    height: 60%;
-    width: 1px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-#diferenciais .diferenciais-card {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 1.2rem 1.2rem;
-}
-
-#diferenciais .diferenciais-col:not(:last-child) .diferenciais-card {
-    border-right: 4px solid #0047b3;
-}
-
-#diferenciais .diferenciais-card .card-body {
-    padding: 0;
-}
-
-#diferenciais .diferenciais-card i {
-    color: #d4af37 !important;
-    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.45));
-    margin-bottom: 1rem;
-}
-
-/* =========================================
-   DESKTOP (≥ 992px): offset lateral intencional
-========================================= */
-@media (min-width: 992px) {
-    #diferenciais .container {
-        margin-left: 310px;
-    }
-}
-
-/* =========================================
-   RESPONSIVIDADE — MOBILE & TABLET (< 992px)
-========================================= */
-@media (max-width: 991.98px) {
-
-    /* Imagem: limita tamanho e centraliza */
-    .sobre-img {
-        max-width: 260px;
-        margin: 0 auto;
-        display: block;
-    }
-
-    /* Header: força fluxo vertical */
-    header .d-flex.align-items-center.flex-grow-1.w-100 {
-        display: block !important;
-        width: 100% !important;
-        padding: 0 !important;
-    }
-
-    header section.mb-5.me-md-5 {
-        margin-right: 0 !important;
-        margin-bottom: 20px !important;
-        width: 100% !important;
-    }
-
-    header .container-fluid {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        text-align: center !important;
-    }
-
-    header h1.display-5 {
-        font-size: 1.7rem !important;
-        margin-top: 15px !important;
-    }
-
-    header p.fs-4 {
-        font-size: 1rem !important;
-        padding: 0 10px;
-    }
-
-    /* Diferenciais: zera o offset e empilha os cards */
-    #diferenciais {
-        margin-top: 40px !important;
-        width: 100% !important;
-        position: relative !important;
-        left: 0 !important;
-    }
-
-    #diferenciais .container {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
-
-    #diferenciais .row,
-    #diferenciais .row.g-0 {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 100% !important;
-        margin: 0 auto !important;
-        gap: 15px !important;
-    }
-
-    .diferenciais-col {
-        width: 90% !important;
-        max-width: 320px !important;
-        padding: 0 !important;
-    }
-
-    /* Remove a linha separadora vertical no mobile */
-    .diferenciais-col:not(:last-child)::after {
-        display: none !important;
-    }
-
-    /* Remove a borda direita dos cards no mobile */
-    #diferenciais .diferenciais-col:not(:last-child) .diferenciais-card {
-        border-right: none !important;
-    }
-
-    /* Adiciona fundo sutil e borda para destacar cada card empilhado */
-    .diferenciais-card {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-radius: 12px !important;
-    }
-
-    .diferenciais-card .card-title {
-        font-size: 1rem !important;
-        white-space: normal !important;
-    }
-}
-
-/* =========================================
-   MOBILE PEQUENO (< 768px)
-========================================= */
-@media (max-width: 768px) {
-    .sobre-img {
-        max-width: 220px;
-    }
-}
-
-	#servicos {
-        padding: 80px 0;
-    }
-
-    .section-subtitle {
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-weight: 700;
-        font-size: 0.85rem;
-    }
-
-    .service-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border-radius: 12px;
-        overflow: hidden;
-    }
-
-    .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
-    }
-
-    .icon-wrapper {
-        width: 70px;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(13, 110, 253, 0.05); /* Azul muito suave */
-        border-radius: 50%;
-        margin: 0 auto 1.5rem;
-        color: #0d6efd;
-        transition: 0.3s;
-    }
-
-    .service-card:hover .icon-wrapper {
-        background-color: #0d6efd;
-        color: #fff;
-    }
-
-    .link-hover-custom {
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: gap 0.3s;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .link-hover-custom:hover i {
-        transform: translateX(5px);
-        transition: 0.3s;
-    }
-
-
-
-    /* == Estilização Premium Seção Sobre */
-    #time {
-        padding: 120px 0;
-        overflow: hidden;
-    }
-
-    /* Composição de Imagens Dinâmica */
-    .image-stack {
-        position: relative;
-        height: 450px;
-        width: 100%;
-    }
-
-    .img-main {
-        width: 70%;
-        border-radius: 20px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-        border: 8px solid #fff;
-        transition: 0.5s ease;
-    }
-
-    .img-secondary {
-        width: 65%;
-        border-radius: 20px;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: 1;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        filter: grayscale(30%);
-        transition: 0.5s ease;
-    }
-
-    .image-stack:hover .img-main { transform: scale(1.02); z-index: 3; }
-    .image-stack:hover .img-secondary { transform: translate(-10px, -10px); filter: grayscale(0); }
-
-    /* Decoração de fundo */
-    .image-stack::after {
-        content: "";
-        position: absolute;
-        width: 150px;
-        height: 150px;
-        background-image: radial-gradient(#0d6efd 2px, transparent 2px);
-        background-size: 20px 20px;
-        top: -20px;
-        left: -20px;
-        z-index: 0;
-        opacity: 0.3;
-    }
-
-    /* Tipografia e Badges */
-    .about-badge {
-        background-color: rgba(13, 110, 253, 0.1);
-        color: #0d6efd;
-        padding: 8px 20px;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 0.75rem;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        display: inline-block;
-    }
-
-    .stat-card-custom {
-        border: none;
-        background: #f8f9fa;
-        border-radius: 16px;
-        padding: 25px 15px;
-        text-align: center;
-        transition: 0.4s;
-        border-bottom: 3px solid transparent;
-    }
-
-    .stat-card-custom:hover {
-        background: #fff;
-        box-shadow: 0 15px 35px rgba(13, 110, 253, 0.1);
-        border-bottom: 3px solid #0d6efd;
-    }
-
-    .stat-val {
-        font-size: 1.8rem;
-        color: #1a1a1a;
-        line-height: 1;
-    }
-
-    .stat-desc {
-        font-size: 0.75rem;
-        color: #6c757d;
-        font-weight: 600;
-        margin-top: 5px;
-    }
-
-    @media (max-width: 991px) {
-        .image-stack { height: 350px; margin-bottom: 50px; }
-    }
-
-	.image-stack {
-        position: relative;
-        height: 480px;
-        width: 100%;
-        cursor: pointer; /* Indica que é clicável */
-    }
-
-    .stack-img {
-        border-radius: 20px;
-        position: absolute;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        border: 6px solid #fff;
-    }
-
-    /* Posição da Foto 1 (Venicius) */
-    .img-1 {
-        width: 75%;
-        top: 0;
-        left: 0;
-        z-index: 5;
-    }
-
-    /* Posição da Foto 2 (Time) */
-    .img-2 {
-        width: 75%;
-        bottom: 0;
-        right: 0;
-        z-index: 4;
-        filter: grayscale(40%);
-    }
-
-    /* CLASSE DE TROCA: Quando a foto 2 ganha o topo */
-    .image-stack.active .img-1 {
-        z-index: 4;
-        transform: scale(0.9) translate(20px, 20px);
-        filter: grayscale(40%);
-    }
-
-    .image-stack.active .img-2 {
-        z-index: 5;
-        transform: scale(1.05) translate(-20px, -20px);
-        filter: grayscale(0%);
-        box-shadow: 0 30px 60px rgba(13, 110, 253, 0.2);
-    }
-
-    /* Estilização Premium para Diferenciais */
-    #Diferenciais {
-        background: radial-gradient(circle at top left, #0a0a0a, #1a1a1a); /* Fundo escuro profundo */
-        padding: 140px 0;
-        min-height: 980px;
-        position: relative;
-        width: 100vw;
-        max-width: 100vw;
-        left: 50%;
-        right: 50%;
-        margin-left: -50vw;
-        margin-right: -50vw;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column; /* Garante que o conteúdo flua de cima para baixo */
-        justify-content: center; /* Centraliza o conteúdo na vertical */
-        align-items: center;    /* Centraliza o conteúdo na horizontal */
-    }
-
-    #Diferenciais .container {
-        max-width: 1200px;
-        width: 100%;
-        margin: 0 auto;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    /* Ajuste no título para brilhar no fundo escuro */
-    #Diferenciais .about-badge {
-        background-color: rgba(13, 110, 253, 0.15);
-        color: #3b82f6;
-        border: 1px solid rgba(13, 110, 253, 0.3);
-    }
-
-    .Diferenciais-card, .diferenciais-card {
-        padding: 40px 25px;
-        border-radius: 24px !important;
-        background: rgba(255, 255, 255, 0.03) !important; /* Vidro muito sutil */
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Efeito de brilho na borda ao passar o mouse */
-    .Diferenciais-card:hover, .diferenciais-card:hover {
-        transform: translateY(-12px);
-        background: rgba(255, 255, 255, 0.07) !important;
-        border-color: #0d6efd !important;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Ícone com brilho Neon */
-    .Diferenciais-card i {
-        background: linear-gradient(45deg, #0d6efd, #00d4ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 0 10px rgba(13, 110, 253, 0.3));
-        margin-bottom: 25px !important;
-        transition: 0.3s;
-    }
-
-    .Diferenciais-card:hover i, .diferenciais-card:hover i {
-        filter: drop-shadow(0 0 20px rgba(13, 110, 253, 0.6));
-        transform: scale(1.1);
-    }
-
-    /* Linha decorativa embaixo do título do card */
-    .Diferenciais-card .card-title, .diferenciais-card .card-title {
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        margin-bottom: 15px;
-    }
-
-    .diferenciais-card .card-text, .Diferenciais-card .card-text {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: #a0a0a0 !important; /* Cinza suave para leitura confortável */
-    }
-
-    /* Detalhe visual de luz no canto do card */
-    .diferenciais-card::before, .Diferenciais-card::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(13, 110, 253, 0.05) 0%, transparent 70%);
-        opacity: 0;
-        transition: 0.5s;
-    }
-
-    .diferenciais-card:hover::before, .Diferenciais-card:hover::before {
-        opacity: 1;
-    }
-
-    
-    
-
-
-#depoimentos {
-        padding: 100px 0;
-    }
-
-    .testimonial-card {
-        border-radius: 20px !important;
-        transition: all 0.4s ease;
-        background: #ffffff;
-        border: 1px solid rgba(0,0,0,0.05) !important;
-    }
-
-    .testimonial-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 40px rgba(13, 110, 253, 0.08) !important;
-    }
-
-    /* Estilização das 5 Estrelas */
-    .stars {
-        color: #ffc107; /* Cor Ouro */
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-    }
-
-    .quote-icon {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        font-size: 2rem;
-        color: rgba(13, 110, 253, 0.1);
-    }
-
-    /* Estilo dos Botões de Navegação */
-    .nav-btn {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: #fff;
-        border: 1px solid #eee;
-        color: #0d6efd;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .nav-btn:hover {
-        background: #0d6efd;
-        color: #fff;
-        box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2);
-    }
-
-    .client-img {
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 3px solid #f0f7ff;
-    }
-
-
-
-
-
-.py-120 { padding: 120px 0; }
-
-    /* Cards de Contato Rápido */
-    .contact-link-card {
-        display: flex;
-        align-items: center;
-        padding: 25px;
-        background: #fff;
-        border-radius: 16px;
-        text-decoration: none !important;
-        transition: all 0.3s ease;
-        border: 1px solid #eee;
-        height: 100%;
-    }
-
-    .contact-link-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-        border-color: #e7910f;
-    }
-
-    .contact-icon-box {
-        width: 50px;
-        height: 50px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        color: #fff;
-        font-size: 1.5rem;
-    }
-
-    .bg-whatsapp { background: #25D366; }
-    .bg-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-
-    .contact-label {
-        margin: 0;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 700;
-        color: #999;
-    }
-
-    .contact-info {
-        color: #2c3e50;
-        font-weight: 600;
-        font-size: 1.05rem;
-    }
-
-    /* Estilização do Formulário */
-    .premium-form {
-        background: #fff;
-        padding: 60px;
-        border-radius: 30px;
-        border: 1px solid rgba(0,0,0,0.03);
-    }
-
-    .form-floating > .form-control {
-        border: 2px solid #f0f0f0;
-        border-radius: 15px;
-        padding: 1rem 1.2rem;
-        height: calc(3.5rem + 10px);
-        font-weight: 500;
-        color: #2c3e50;
-    }
-
-    .form-floating > label {
-        padding: 1rem 1.2rem;
-        color: #888;
-    }
-
-    .form-floating > .form-control:focus {
-        border-color: #e7910f;
-        box-shadow: 0 0 0 4px rgba(231, 145, 15, 0.1);
-    }
-
-    /* Botão Premium */
-    .btn-premium-submit {
-        background: linear-gradient(135deg, #e7910f 0%, #d97d0a 100%);
-        color: white;
-        padding: 18px 60px;
-        border-radius: 50px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        border: none;
-        box-shadow: 0 10px 20px rgba(231, 145, 15, 0.3);
-        transition: all 0.3s ease;
-    }
-
-    .btn-premium-submit:hover {
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(231, 145, 15, 0.4);
-        color: white;
-    }
-
-    @media (max-width: 768px) {
-        .premium-form { padding: 30px 20px; }
-    }
-
-
-
-.footer-logo {
-    /* Aumentado de 45px/65px para 90px para dar destaque premium */
-    max-height: 60px !important; 
-    width: auto;
-    display: block;
-    filter: none !important; 
-    -webkit-filter: none !important;
-    transition: transform 0.3s ease;
-    
-    /* Garante alinhamento central em telas menores e à esquerda em telas grandes */
-    margin-bottom: 20px; 
-}
-
-/* Ajuste responsivo: um pouco menor no celular para não ocupar a tela toda */
-@media (max-width: 768px) {
-    .footer-logo {
-        max-height: 70px !important;
-        margin: 0 auto 25px; /* Centraliza a logo no mobile */
-    }
-}
-.footer-logo:hover {
-    transform: scale(1.05);
-}
-
-.footer-premium {
-    background-color: #001328; /* Este é o tom exato de azul da sua logo */
-    color: #ffffff;
-    padding: 80px 0 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-    .footer-logo {
-        max-height: 45px;
-        filter: brightness(0) invert(1); /* Garante que a logo fique branca */
-    }
-
-    .footer-description {
-        color: #a0aec0;
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
-    .footer-title {
-        color: #ffffff;
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-bottom: 25px;
-        position: relative;
-    }
-
-    .footer-links {
-        list-style: none;
-        padding: 0;
-    }
-
-    .footer-links li {
-        margin-bottom: 12px;
-    }
-
-    .footer-links a {
-        color: #a0aec0;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-size: 0.95rem;
-    }
-
-    .footer-links a:hover {
-        color: #0d6efd;
-        padding-left: 5px;
-    }
-
-    .footer-contact {
-        list-style: none;
-        padding: 0;
-    }
-
-    .footer-contact li {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        color: #a0aec0;
-        font-size: 0.95rem;
-    }
-
-    .footer-contact i {
-        color: #0d6efd;
-        margin-right: 12px;
-        width: 20px;
-        text-align: center;
-    }
-
-    .footer-divider {
-        margin: 50px 0 30px;
-        border-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .footer-bottom {
-        font-size: 0.85rem;
-        color: #718096;
-    }
-
-    .footer-social-icons {
-        display: flex;
-        gap: 15px;
-        justify-content: flex-end;
-    }
-
-    .footer-social-icons a {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        transition: 0.3s;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-social-icons a:hover {
-        background: #0d6efd;
-        transform: translateY(-3px);
-        border-color: #0d6efd;
-    }
-
-    @media (max-width: 768px) {
-        .footer-social-icons {
-            justify-content: center;
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* =========================================
-   CARD HERO — MARCOS VENICIUS
-========================================= */
-.hero-visual-container {
-    perspective: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 10px;
-    flex-shrink: 0;
-}
-
-.mv-card {
-    position: relative;
-    background: rgba(212, 175, 55, 0.08);
-    border: 1px solid rgba(212, 175, 55, 0.25);
-    border-radius: 16px;
-    padding: 16px;
-    width: 200px;
-    backdrop-filter: blur(10px);
-    transition: transform 0.1s ease-out;
-    transform-style: preserve-3d;
-}
-
-/* Tag de credibilidade */
-.mv-card-tag {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(212, 175, 55, 0.12);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    color: #d4af37;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.mv-tag-dot {
-    width: 6px;
-    height: 6px;
-    background: #d4af37;
-    border-radius: 50%;
-    flex-shrink: 0;
-    animation: pulseDot 2s ease-in-out infinite;
-}
-
-@keyframes pulseDot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-}
-
-/* Imagem */
-.mv-card-img-wrap {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 12px;
-}
-
-.mv-card-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
-    border-radius: 10px;
-}
-
-/* Barra de carregamento abaixo da imagem */
-.mv-scan-line {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 3px;
-    margin-top: 10px;
-    overflow: hidden;
-    border-radius: 999px;
-    background: rgba(212, 175, 55, 0.18);
-    box-shadow: inset 0 0 8px rgba(212, 175, 55, 0.15);
-}
-
-.mv-scan-line::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 44%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, transparent, #d4af37 30%, #f5d37e 70%, transparent);
-    box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
-    animation: loadingBar 2.6s ease-in-out infinite;
-}
-
-@keyframes loadingBar {
-    0%   { transform: translateX(-110%); }
-    50%  { transform: translateX(75%); }
-    100% { transform: translateX(250%); }
-}
-
-/* Badges laterais */
-.mv-badge {
-    position: absolute;
-    padding: 7px 12px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    font-size: 10px;
-    white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.mv-badge small {
-    font-size: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    opacity: 0.6;
-}
-
-.mv-badge strong {
-    font-size: 10px;
-}
-
-.mv-badge-top {
-    top: 70px;
-    right: -90px;
-    background: #fff;
-    color: #001328;
-    border-left: 3px solid #d4af37;
-}
-
-.mv-badge-bottom {
-    bottom: 60px;
-    left: -90px;
-    background: #001328;
-    color: #fff;
-    border: 1px solid rgba(212, 175, 55, 0.4);
-    border-bottom: 3px solid #d4af37;
-}
-
-/* Métricas */
-.mv-card-stats {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 4px 0;
-}
-
-.mv-stat {
-    text-align: center;
-    flex: 1;
-}
-
-.mv-stat strong {
-    display: block;
-    color: #d4af37;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.1;
-}
-
-.mv-stat span {
-    display: block;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 9px;
-    margin-top: 2px;
-}
-
-.mv-stat-divider {
-    width: 1px;
-    height: 28px;
-    background: rgba(255, 255, 255, 0.1);
-    flex-shrink: 0;
-}
-
-/* Efeito 3D no hover (mouse) */
-@media (min-width: 992px) {
-    .mv-card:hover {
-        box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
-    }
-}
-
-/* Mobile: card menor e centralizado */
-@media (max-width: 991.98px) {
-    .mv-card {
-        width: 160px;
-    }
-
-    .mv-card-img {
-        height: 150px;
-    }
-
-    .mv-badge-top,
-    .mv-badge-bottom {
-        display: none;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Estilização do Novo Header (Fusão) */
-.hero { 
-    background: linear-gradient(135deg, #001328 0%, #002050 60%, #001a40 100%); 
-    padding: 0 16px 16px; 
-    display: flex; 
-    align-items: flex-start; 
-    gap: 20px; 
-    min-height: 86vh; 
-    position: relative; 
-    overflow: hidden; 
-}
-
-.hero-left { flex: 1; z-index: 1; text-align: left;}
-
-.hero-tag { 
-    display: inline-flex; 
-    align-items: center; 
-    gap: 6px; 
-    background: rgba(212,175,55,0.12); 
-    border: 1px solid rgba(212,175,55,0.3); 
-    color: #d4af37; 
-    padding: 6px 16px; 
-    border-radius: 20px; 
-    font-size: 11px; 
-    font-weight: 500; 
-    letter-spacing: 1px; 
-    margin-bottom: 24px;
-}
-
-.hero-tag-dot { width: 8px; height: 8px; background: #d4af37; border-radius: 50%; }
-
-.hero h1 em { color: #d4af37; font-style: normal; }
-
-.btn-gold { 
-    background: #d4af37; 
-    color: #001328; 
-    padding: 12px 28px; 
-    border-radius: 8px; 
-    font-weight: 600; 
-    transition: 0.3s; 
-}
-
-.btn-gold:hover { background: #f5d37e; transform: translateY(-3px); }
-
-.btn-outline { 
-    background: transparent; 
-    color: #fff; 
-    border: 1px solid rgba(255,255,255,0.25); 
-    padding: 12px 28px; 
-    border-radius: 8px; 
-    transition: 0.3s; 
-}
-
-/* Responsividade para o novo Hero */
 @media (max-width: 991px) {
-    .hero { flex-direction: column; text-align: center; padding-top: 40px; }
-    .hero-left { text-align: center; }
-    .hero-actions { justify-content: center; }
-    #diferenciais { position: relative !important; margin-top: 40px !important; }
+    .logo-container img { height: 50px !important; }
+    .navbar .container-fluid { padding-left: 15px; padding-right: 15px; }
+    .navbar-nav .nav-item { margin-left: 0; margin-bottom: 10px; }
+    .btn-whatsapp-nav { margin-left: 0 !important; }
 }
 
-/* Container Principal do Hero */
-.hero-section {
+@media (max-width: 991.98px) {
+    .navbar .container-fluid { padding-left: 18px !important; padding-right: 18px !important; }
+    .logo-container img { height: 64px !important; margin-right: 0 !important; }
+    .navbar-toggler {
+        margin-left: auto;
+        border-color: rgba(212, 175, 55, 0.55);
+        padding: 8px 10px;
+    }
+    .navbar-toggler:focus { box-shadow: 0 0 0 0.15rem rgba(212, 175, 55, 0.25); }
+    .navbar-collapse { padding: 14px 0 8px; }
+    .navbar-nav { align-items: stretch !important; gap: 6px; text-align: center; }
+    .navbar-nav .nav-item { margin-left: 0 !important; margin-bottom: 0 !important; }
+    .navbar-nav .nav-link { padding: 10px 12px; }
+    .btn-whatsapp-nav {
+        width: 100%;
+        justify-content: center;
+        margin: 8px 0 0 !important;
+        padding: 12px 18px !important;
+        border: 0 !important;
+        border-radius: 12px !important;
+        margin-left: clamp(4px, 1vw, 18px) !important;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .navbar .container-fluid { padding-left: 12px !important; padding-right: 12px !important; }
+    .logo-container img { height: 52px !important; }
+}
+
+
+/* =========================================
+   4. HERO — HEADER
+========================================= */
+header.hero {
     background: linear-gradient(135deg, #001328 0%, #002050 60%, #001a40 100%);
+    padding: 0 16px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    min-height: 86vh;
+    position: relative;
+    overflow: hidden;
+    display: block;
     width: 100%;
-    padding: 38px 6% 80px;
+    max-width: 100%;
+    min-height: auto;
+}
+
+.hero-section {
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(34px, 5vw, 72px) clamp(16px, 6vw, 80px);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1364,31 +276,53 @@ section {
     gap: 50px;
 }
 
-/* Tipografia e Cores */
 .hero-left {
-    flex: 0 1 760px;
-}
-
-.hero-right {
-    flex: 0 0 auto;
+    flex: 1;
     z-index: 1;
+    text-align: left;
 }
 
 .hero-left h1 {
     max-width: 760px;
+    font-size: clamp(2rem, 3.8vw, 3.9rem) !important;
+    line-height: 1.18;
 }
 
 .hero-left h1 em {
-    color: #d4af37; /* Dourado da MV Contabi */
+    color: #d4af37;
     font-style: normal;
 }
 
 .hero-left p {
     color: #b0b0b0;
     max-width: 600px;
+    font-size: clamp(1rem, 1.75vw, 1.5rem) !important;
+    line-height: 1.45;
 }
 
-/* Botões Customizados */
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(212,175,55,0.12);
+    border: 1px solid rgba(212,175,55,0.3);
+    color: #d4af37;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.hero-tag-dot {
+    width: 8px;
+    height: 8px;
+    background: #d4af37;
+    border-radius: 50%;
+    animation: pulseDot 1.8s ease-in-out infinite;
+}
+
 .btn-gold {
     background: #d4af37;
     color: #001328;
@@ -1399,42 +333,316 @@ section {
     transition: 0.3s;
     display: inline-block;
 }
+.btn-gold:hover { background: #f1c40f; transform: translateY(-3px); }
 
-.btn-gold:hover {
-    background: #f1c40f;
-    transform: translateY(-3px);
-}
 
-.btn-outline-white {
-    border: 1px solid rgba(255,255,255,0.3);
-    color: #fff;
-    padding: 12px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    margin-left: 15px;
-    transition: 0.3s;
-}
+/* =========================================
+   5. HERO — CARD DE MARCOS VENICIUS
+========================================= */
 
-/* O Card da Direita (Glassmorphism) */
+/* Área de imagem + card glassmorphism */
 .hero-card {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 46px;
     border-radius: 24px;
     position: relative;
     box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    width: min(100%, 380px);
+    padding: clamp(24px, 3vw, 46px);
 }
 
-.mv-card-img-wrap {
+.mv-card-image-area {
     width: 250px;
-    height: auto;
-    border-radius: 15px;
-    overflow: visible;
+    margin: 0 auto;
     position: relative;
-    margin: 0 auto 20px;
+    padding-bottom: 20px;
 }
 
+/* Wrapper flip 3D */
+.mv-card-img-wrap {
+    width: 100%;
+    height: 310px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    perspective: 900px;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.45s ease;
+    cursor: pointer;
+}
+
+/* Faces do card */
+.mv-card-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    border-radius: 15px;
+}
+
+.mv-card-front { transform: rotateY(0deg); }
+.mv-card-back  { transform: rotateY(180deg); }
+
+/* Flip quando .flipped é adicionado via JS */
+.mv-card-img-wrap.flipped .mv-card-front { transform: rotateY(-180deg); }
+.mv-card-img-wrap.flipped .mv-card-back  { transform: rotateY(0deg); }
+
+/* ── VERSO DO CARD — REDESIGN ─────────────────────────────────────── */
+.mv-card-back {
+    background: linear-gradient(160deg, #001b3d 0%, #00091a 60%, #001020 100%);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 20px 18px 16px;
+    color: #f0ead6;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    overflow: hidden;
+    gap: 10px;
+}
+
+/* Luz de canto dourada */
+.mv-card-back::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    background:
+        radial-gradient(ellipse at 95% 5%, rgba(212,175,55,0.22) 0%, transparent 40%),
+        radial-gradient(ellipse at 5% 95%, rgba(13, 62, 140, 0.18) 0%, transparent 45%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Linha dourada topo (decorativa) */
+.mv-card-back::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 12%; right: 12%;
+    height: 2px;
+    border-radius: 0 0 4px 4px;
+    background: linear-gradient(90deg, transparent, #d4af37 30%, #f5d37e 70%, transparent);
+    opacity: 0.7;
+}
+
+/* Tudo dentro fica acima do pseudo-elemento */
+.mv-card-back > * { position: relative; z-index: 1; }
+
+/* Cabeçalho: nome + cargo */
+.mv-back-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mv-back-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #d4af37;
+    object-fit: cover;
+    object-position: top center;
+    flex-shrink: 0;
+    filter: grayscale(20%);
+}
+
+.mv-back-name {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #f5d37e;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.mv-back-role {
+    font-size: 0.65rem;
+    color: #99b8d4;
+    margin: 2px 0 0;
+    letter-spacing: 0.03em;
+}
+
+/* Divider dourado */
+.mv-back-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   AJUSTES DE TIPOGRAFIA E RESPONSIVIDADE
+========================================= */
+
+/* Lista de itens (Ajuste de tamanho e alinhamento) */
+.mv-back-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espaço entre os itens */
+}
+
+.mv-back-items li {
+    display: flex;
+    align-items: flex-start; /* Ícone alinhado ao topo do texto */
+    gap: 10px;
+    font-size: 0.85rem; /* Tamanho reduzido para não cortar */
+    line-height: 1.4;
+    color: #d0dde8;
+}
+
+.mv-back-items li .mv-back-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: rgba(212,175,55,0.1);
+    border: 1px solid rgba(212,175,55,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: #d4af37;
+}
+
+.mv-back-items li strong {
+    color: #f5d37e;
+    font-weight: 600;
+}
+
+/* =========================================
+   ESTILIZAÇÃO DA BADGE DE PREMIAÇÃO (COMPACTA)
+========================================= */
+.mv-back-badge {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    
+    /* Espaçamento e Forma */
+    padding: 6px 14px;
+    border-radius: 30px;
+    margin: 0 auto 15px auto; /* Centraliza e dá distância do conteúdo abaixo */
+    
+    /* Cores e Estilo Glass */
+    background: rgba(212, 175, 55, 0.08); /* Fundo dourado bem suave */
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Borda dourada fina */
+    backdrop-filter: blur(4px);
+    
+    /* Tipografia */
+    color: #d4af37;
+    font-size: 10px; /* Tamanho pequeno e elegante */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    white-space: nowrap;
+    
+    /* Efeito de profundidade */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Ícone da Medalha */
+.mv-back-badge i {
+    font-size: 12px;
+    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+}
+
+/* Efeito de brilho ao passar o mouse no card */
+.mv-card:hover .mv-back-badge {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: #d4af37;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+/* Responsividade: Garante que não quebre em telas minúsculas */
+@media (max-width: 380px) {
+    .mv-back-badge {
+        font-size: 9px;
+        padding: 5px 10px;
+    }
+}
+
+/* =========================================
+   MEDIA QUERIES (O SEGREDO DA RESPONSIVIDADE)
+========================================= */
+
+/* Telas médias (Tablets) */
+@media (max-width: 991px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .mv-card {
+        width: 100%;
+        max-width: 320px; /* Limita largura no mobile */
+        margin: 0 auto;
+    }
+
+    .mv-badge-top, .mv-badge-bottom {
+        display: none; /* Remove badges flutuantes que poluem o mobile */
+    }
+}
+
+/* Telas pequenas (Celulares) */
+@media (max-width: 480px) {
+    .hero-left h1 {
+        font-size: 1.75rem !important; /* Diminui o título principal */
+    }
+
+    .hero-left p {
+        font-size: 0.95rem !important;
+    }
+
+    .mv-back-items li {
+        font-size: 0.78rem; /* Texto da lista menor para caber tudo */
+    }
+
+    .mv-card {
+        padding: 20px;
+    }
+
+    .mv-card-img {
+        height: 240px; /* Reduz altura da imagem no mobile */
+    }
+}
+
+
+
+/* Hint "toque para ver" — visível só em mobile */
+.mv-flip-hint {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    color: rgba(212,175,55,0.5);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .mv-flip-hint { display: block; }
+}
+/* ───────────────────────────────────────── fim do redesign ─────── */
+
+/* Imagem da frente */
 .mv-card-img {
     width: 100%;
     height: 310px;
@@ -1445,47 +653,30 @@ section {
     border-radius: 15px;
 }
 
-/* Barra de carregamento abaixo da imagem */
+/* Linha de scan dourada */
 .mv-scan-line {
-    position: relative;
-    display: block;
-    width: 100%;
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
     height: 3px;
-    margin-top: 10px;
-    overflow: hidden;
     border-radius: 999px;
     background: rgba(212, 175, 55, 0.18);
     box-shadow: inset 0 0 8px rgba(212, 175, 55, 0.15);
+    overflow: hidden;
 }
 
 .mv-scan-line::before {
     content: "";
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 44%;
+    top: 0; left: -30%;
+    width: 30%;
+    height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, transparent, #d4af37 30%, #f5d37e 70%, transparent);
+    background: linear-gradient(90deg, transparent 0%, #d4af37 30%, #f5d37e 70%, transparent 100%);
     box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
-    animation: loadingBar 2.6s ease-in-out infinite;
+    animation: loadingBar 1.8s linear infinite;
 }
 
-/* Badges Flutuantes */
-.badge-scan, .badge-scan2 {
-    position: absolute;
-    background: rgba(0,0,0,0.8);
-    padding: 8px 15px;
-    border-radius: 10px;
-    border-left: 3px solid #d4af37;
-    font-size: 10px;
-    z-index: 2;
-}
-
-.badge-scan { top: 20px; left: -20px; }
-.badge-scan2 { bottom: 80px; right: -20px; }
-
-/* Stats no Card */
+/* Stats mini */
 .hero-stats {
     display: flex;
     justify-content: space-around;
@@ -1493,9 +684,7 @@ section {
     margin-top: 10px;
 }
 
-.stat-mini {
-    text-align: center;
-}
+.stat-mini { text-align: center; }
 
 .stat-mini strong {
     display: block;
@@ -1509,77 +698,94 @@ section {
     color: #ccc;
 }
 
-@media (max-width: 991px) {
-    .hero-section {
-        padding-top: 32px;
-        padding-bottom: 56px;
+/* Hover desktop no wrapper */
+@media (min-width: 992px) {
+    .mv-card-img-wrap:hover {
+        box-shadow: 0 34px 70px rgba(0, 0, 0, 0.18);
     }
-
-    .hero-card {
-        padding: 30px;
-    }
-
-    .mv-card-img-wrap {
-        width: min(230px, 78vw);
-    }
-
-    .mv-card-img {
-        height: 280px;
+    .mv-card:hover {
+        box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
     }
 }
 
+
 /* =========================================
-   RESPONSIVIDADE FINAL — SOMENTE HEADER
+   6. HERO — DIFERENCIAIS DO HEADER
 ========================================= */
+#diferenciais {
+    background-color: #001328 !important;
+    width: 100%;
+    max-width: 100%;
+    position: relative !important;
+    inset: auto !important;
+    margin: 0 !important;
+    padding: 18px clamp(14px, 4vw, 36px) 44px !important;
+    background: transparent !important;
+}
+
+#diferenciais .container {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+#diferenciais .row,
+#diferenciais .row.g-0 {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(12px, 2.4vw, 28px) !important;
+    width: 100%;
+    margin: 0 !important;
+}
+
+#diferenciais .diferenciais-col:nth-child(1) { transition-delay: 0.6s; }
+#diferenciais .diferenciais-col:nth-child(2) { transition-delay: 0.75s; }
+#diferenciais .diferenciais-col:nth-child(3) { transition-delay: 0.9s; }
+
+#diferenciais .diferenciais-card .card-body { padding: 0; }
+
+#diferenciais .diferenciais-card i {
+    color: #d4af37 !important;
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.45));
+    margin-bottom: 1rem;
+}
+
+#diferenciais .diferenciais-card {
+    height: 100%;
+    min-height: 138px;
+    padding: clamp(18px, 2.4vw, 28px) 14px;
+}
+
+/* Desktop offset */
+@media (min-width: 992px) {
+    #diferenciais .container { margin-left: 310px; }
+}
+
+
+/* =========================================
+   7. HERO — RESPONSIVIDADE
+========================================= */
+@media (max-width: 1320px) and (min-width: 992px) {
+    .hero-section {
+        gap: 32px;
+        padding-left: clamp(34px, 5vw, 64px);
+        padding-right: clamp(34px, 5vw, 64px);
+    }
+    .hero-left { flex-basis: 620px; }
+    .hero-card { width: 318px; padding: 36px 30px; }
+    .mv-card-img-wrap { width: 230px; }
+    .mv-card-img { height: 280px; }
+}
+
+@media (max-width: 991px) {
+    .hero { flex-direction: column; text-align: center; padding-top: 40px; }
+    .hero-left { text-align: center; }
+    .hero-actions { justify-content: center; }
+    #diferenciais { position: relative !important; margin-top: 40px !important; }
+}
+
 @media (max-width: 991.98px) {
-    .navbar .container-fluid {
-        padding-left: 18px !important;
-        padding-right: 18px !important;
-    }
-
-    .logo-container img {
-        height: 64px !important;
-        margin-right: 0 !important;
-    }
-
-    .navbar-toggler {
-        margin-left: auto;
-        border-color: rgba(212, 175, 55, 0.55);
-        padding: 8px 10px;
-    }
-
-    .navbar-toggler:focus {
-        box-shadow: 0 0 0 0.15rem rgba(212, 175, 55, 0.25);
-    }
-
-    .navbar-collapse {
-        padding: 14px 0 8px;
-    }
-
-    .navbar-nav {
-        align-items: stretch !important;
-        gap: 6px;
-        text-align: center;
-    }
-
-    .navbar-nav .nav-item {
-        margin-left: 0 !important;
-        margin-bottom: 0 !important;
-    }
-
-    .navbar-nav .nav-link {
-        padding: 10px 12px;
-    }
-
-    .btn-whatsapp-nav {
-        width: 100%;
-        justify-content: center;
-        margin: 8px 0 0 !important;
-        padding: 12px 18px !important;
-        border: 0 !important;
-        border-radius: 12px !important;
-    }
-
     .hero {
         display: block;
         min-height: auto;
@@ -1587,7 +793,6 @@ section {
         overflow: hidden;
         text-align: center;
     }
-
     .hero-section {
         flex-direction: column;
         align-items: center;
@@ -1597,23 +802,14 @@ section {
         gap: 30px;
         text-align: center;
     }
-
     .hero-left,
     .hero-right {
         flex: none;
         width: 100%;
         max-width: 680px;
     }
-
-    .hero-right.hero-imagem {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-
-    .hero-left {
-        text-align: center;
-    }
-
+    .hero-right.hero-imagem { opacity: 1 !important; transform: none !important; }
+    .hero-left { text-align: center; }
     .hero-left h1 {
         max-width: 680px;
         margin-left: auto;
@@ -1621,7 +817,6 @@ section {
         font-size: 2.35rem !important;
         line-height: 1.18;
     }
-
     .hero-left p {
         max-width: 560px;
         margin-left: auto;
@@ -1630,42 +825,22 @@ section {
         line-height: 1.55;
         padding: 0 !important;
     }
-
     .hero-tag {
         max-width: 100%;
         justify-content: center;
         white-space: normal;
     }
-
-    .hero-actions {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
+    .hero-actions { justify-content: center; flex-wrap: wrap; }
     .hero-card {
         width: 100%;
         max-width: 330px;
         margin: 0 auto;
         padding: 30px;
     }
+    .mv-card-img-wrap { width: min(230px, 76vw); height: auto; aspect-ratio: 3 / 4; }
+    .mv-card-img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
 
-    .badge-scan {
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(-50%);
-        width: max-content;
-        max-width: calc(100% - 24px);
-        text-align: left;
-    }
-
-    .mv-card-img-wrap {
-        width: min(230px, 76vw);
-    }
-
-    .mv-card-img {
-        height: 280px;
-    }
-
+    /* Diferenciais no mobile */
     #diferenciais {
         position: relative !important;
         inset: auto !important;
@@ -1673,12 +848,7 @@ section {
         margin: 22px 0 0 !important;
         padding: 0 18px 32px !important;
     }
-
-    #diferenciais .container {
-        margin: 0 auto !important;
-        padding: 0 !important;
-    }
-
+    #diferenciais .container { margin: 0 auto !important; padding: 0 !important; }
     #diferenciais .row,
     #diferenciais .row.g-0 {
         display: grid !important;
@@ -1688,39 +858,22 @@ section {
         max-width: 360px;
         width: 100%;
     }
+    #diferenciais .diferenciais-col { width: 100% !important; max-width: none !important; margin: 0 !important; }
+    #diferenciais .diferenciais-card { padding: 18px 16px; border-right: 0 !important; }
+    #diferenciais .diferenciais-card i { font-size: 2.1rem; margin-bottom: 0.75rem !important; }
+}
 
-    #diferenciais .diferenciais-col {
-        width: 100% !important;
-        max-width: none !important;
-        margin: 0 !important;
-    }
-
-    #diferenciais .diferenciais-card {
-        padding: 18px 16px;
-        border-right: 0 !important;
-    }
-
-    #diferenciais .diferenciais-card i {
-        font-size: 2.1rem;
-        margin-bottom: 0.75rem !important;
-    }
+@media (max-width: 991px) {
+    .mv-card-img-wrap { width: min(230px, 78vw); height: auto; aspect-ratio: 3 / 4; }
+    .mv-card-img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+    .hero-section { padding-top: 32px; padding-bottom: 56px; }
+    .hero-card { padding: 30px; }
+    .mv-card { width: 160px; }
+    .mv-badge-top, .mv-badge-bottom { display: none; }
 }
 
 @media (max-width: 575.98px) {
-    header.hero {
-        width: 100%;
-        max-width: 100vw;
-    }
-
-    .navbar .container-fluid {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-    }
-
-    .logo-container img {
-        height: 52px !important;
-    }
-
+    header.hero { width: 100%; max-width: 100vw; }
     .hero-section {
         padding: 28px 14px 28px;
         gap: 24px;
@@ -1728,85 +881,755 @@ section {
         max-width: 100% !important;
         overflow: hidden;
     }
-
+    .hero-left h1 {
+        font-size: clamp(1.45rem, 8vw, 2rem) !important;
+        line-height: 1.2;
+        margin-bottom: 18px !important;
+    }
+    .hero-left p { font-size: 1rem !important; }
     .hero-tag {
         padding: 6px 12px;
         font-size: 10px;
         letter-spacing: 0.5px;
-        max-width: 320px;
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
         margin-left: auto;
         margin-right: auto;
     }
-
     header.hero .hero-left {
         width: 100% !important;
-        max-width: 320px !important;
+        max-width: 100% !important;
         margin-left: auto;
         margin-right: auto;
+        padding: 0 4px;
     }
+    header.hero .hero-left h1 { width: 100% !important; max-width: 100% !important; }
+    header.hero .hero-left p  { width: 100% !important; max-width: 100% !important; }
+    .btn-gold { width: 100%; max-width: 260px; padding: 13px 18px; text-align: center; }
+    .hero-card { max-width: 100%; padding: 20px 16px; }
+    .mv-card-image-area { width: min(220px, 80vw); }
+    .mv-card-img-wrap { width: 100%; height: auto; aspect-ratio: 3 / 4; }
+    .mv-card-img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+    .hero-stats { gap: 8px; }
+    .stat-mini strong { font-size: 1rem; }
+    .stat-mini span { font-size: 0.62rem; }
 
-    header.hero .hero-left h1 {
-        width: 100% !important;
-        max-width: 300px !important;
-        font-size: 1.45rem !important;
-        line-height: 1.2;
-        margin-bottom: 18px !important;
-        overflow-wrap: break-word;
-    }
-
-    header.hero .hero-left p {
-        width: 100% !important;
-        max-width: 300px !important;
-        font-size: 1rem !important;
-        overflow-wrap: break-word;
-    }
-
-    .btn-gold {
-        width: 100%;
-        max-width: 260px;
-        padding: 13px 18px;
-        text-align: center;
-    }
-
-    .hero-card {
-        max-width: 280px;
-        padding: 24px;
-    }
-
-    .badge-scan {
-        top: 14px !important;
-        font-size: 9px;
-        padding: 7px 11px;
-    }
-
-    .mv-card-img-wrap {
-        width: min(210px, 72vw);
-    }
-
-    .mv-card-img {
-        height: 250px;
-    }
-
-    .hero-stats {
-        gap: 8px;
-    }
-
-    .stat-mini strong {
-        font-size: 1rem;
-    }
-
-    .stat-mini span {
-        font-size: 0.62rem;
-    }
-
+    /* Diferenciais ≤ 575px */
     #diferenciais {
         padding-left: 14px !important;
         padding-right: 14px !important;
         overflow: hidden;
     }
+    #diferenciais .row,
+    #diferenciais .row.g-0 { max-width: 300px; }
 
+    /* Diferenciais mobile */
+    #diferenciais { margin-top: 40px !important; width: 100% !important; }
+    #diferenciais .container { margin-left: auto !important; margin-right: auto !important; }
     #diferenciais .row,
     #diferenciais .row.g-0 {
-        max-width: 300px;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
     }
+    .diferenciais-col { width: 90% !important; max-width: 320px !important; padding: 0 !important; }
+    .diferenciais-col:not(:last-child)::after { display: none !important; }
+    #diferenciais .diferenciais-col:not(:last-child) .diferenciais-card { border-right: none !important; }
+    .diferenciais-card {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+    }
+    .diferenciais-card .card-title { font-size: 1rem !important; white-space: normal !important; }
+}
+
+@media (max-width: 768px) {
+    .sobre-img { max-width: 220px; }
+    header section.mb-5.me-md-5 { margin-right: 0 !important; margin-bottom: 20px !important; width: 100% !important; }
+    header .container-fluid { padding-left: 20px !important; padding-right: 20px !important; text-align: center !important; }
+    header h1.display-5 { font-size: 1.7rem !important; margin-top: 15px !important; }
+    header p.fs-4 { font-size: 1rem !important; padding: 0 10px; }
+}
+
+/* Diferenciais card — compartilhado */
+.Diferenciais-card, .diferenciais-card {
+    padding: 40px 25px;
+    border-radius: 24px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.Diferenciais-card:hover, .diferenciais-card:hover {
+    transform: translateY(-12px);
+    background: rgba(255, 255, 255, 0.07) !important;
+    border-color: #0d6efd !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.diferenciais-card::before, .Diferenciais-card::before {
+    content: "";
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(13, 110, 253, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: 0.5s;
+}
+.diferenciais-card:hover::before, .Diferenciais-card:hover::before { opacity: 1; }
+
+
+/* =========================================
+   8. SEÇÃO SERVIÇOS
+========================================= */
+#servicos { padding: 80px 0; }
+
+.section-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(13, 110, 253, 0.05);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    color: #0d6efd;
+    transition: 0.3s;
+}
+.service-card:hover .icon-wrapper { background-color: #0d6efd; color: #fff; }
+
+.link-hover-custom {
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: gap 0.3s;
+    display: inline-flex;
+    align-items: center;
+}
+.link-hover-custom:hover i { transform: translateX(5px); transition: 0.3s; }
+
+
+/* =========================================
+   9. SEÇÃO HISTÓRIA / TIME
+========================================= */
+#time { padding: 120px 0; overflow: hidden; }
+
+.image-stack {
+    position: relative;
+    height: 480px;
+    width: 100%;
+    cursor: pointer;
+    max-width: min(100%, 620px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stack-img {
+    border-radius: 20px;
+    position: absolute;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border: 6px solid #fff;
+}
+
+.img-1 { width: 75%; top: 0; left: 0; z-index: 5; }
+.img-2 { width: 75%; bottom: 0; right: 0; z-index: 4; filter: grayscale(40%); }
+
+.image-stack.active .img-1 {
+    z-index: 4;
+    transform: scale(0.9) translate(20px, 20px);
+    filter: grayscale(40%);
+}
+.image-stack.active .img-2 {
+    z-index: 5;
+    transform: scale(1.05) translate(-20px, -20px);
+    filter: grayscale(0%);
+    box-shadow: 0 30px 60px rgba(13, 110, 253, 0.2);
+}
+
+/* Decoração */
+.image-stack::after {
+    content: "";
+    position: absolute;
+    width: 150px; height: 150px;
+    background-image: radial-gradient(#0d6efd 2px, transparent 2px);
+    background-size: 20px 20px;
+    top: -20px; left: -20px;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.about-badge {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.stat-card-custom {
+    border: none;
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 25px 15px;
+    text-align: center;
+    transition: 0.4s;
+    border-bottom: 3px solid transparent;
+}
+.stat-card-custom:hover {
+    background: #fff;
+    box-shadow: 0 15px 35px rgba(13, 110, 253, 0.1);
+    border-bottom: 3px solid #0d6efd;
+}
+
+.stat-val { font-size: 1.8rem; color: #1a1a1a; line-height: 1; }
+.stat-desc { font-size: 0.75rem; color: #6c757d; font-weight: 600; margin-top: 5px; }
+
+@media (max-width: 991px) {
+    .image-stack { height: 350px; margin-bottom: 50px; }
+}
+@media (max-width: 767.98px) {
+    #time { padding-top: 72px; padding-bottom: 72px; }
+    .image-stack { height: min(92vw, 360px); }
+}
+
+
+/* =========================================
+   10. SEÇÃO DIFERENCIAIS (MAIN)
+========================================= */
+#Diferenciais {
+    background: radial-gradient(circle at top left, #0a0a0a, #1a1a1a);
+    padding: 140px 0;
+    min-height: 980px;
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    left: 50%; right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#Diferenciais .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#Diferenciais .about-badge {
+    background-color: rgba(13, 110, 253, 0.15);
+    color: #3b82f6;
+    border: 1px solid rgba(13, 110, 253, 0.3);
+}
+
+.Diferenciais-card i {
+    background: linear-gradient(45deg, #0d6efd, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(13, 110, 253, 0.3));
+    margin-bottom: 25px !important;
+    transition: 0.3s;
+}
+.Diferenciais-card:hover i, .diferenciais-card:hover i {
+    filter: drop-shadow(0 0 20px rgba(13, 110, 253, 0.6));
+    transform: scale(1.1);
+}
+
+.Diferenciais-card .card-title, .diferenciais-card .card-title {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+.Diferenciais-card .card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #a0a0a0 !important;
+}
+
+#contato h2 {
+    background: linear-gradient(135deg, #F5D37E 0%, #C29F55 50%, #8E7341 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@media (max-width: 991.98px) {
+    #Diferenciais { padding-top: 72px; padding-bottom: 72px; }
+    .stat-card-custom { padding: 18px 8px; }
+    .stat-val { font-size: clamp(1.05rem, 4vw, 1.45rem); }
+    .stat-desc { font-size: 0.65rem; }
+    main > section:not(#Diferenciais) { padding-left: 14px; padding-right: 14px; }
+}
+
+
+/* =========================================
+   11. SEÇÃO DEPOIMENTOS
+========================================= */
+#depoimentos { padding: 100px 0; }
+
+.testimonial-card {
+    border-radius: 20px !important;
+    transition: all 0.4s ease;
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+}
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(13, 110, 253, 0.08) !important;
+}
+
+.stars { color: #ffc107; font-size: 0.9rem; margin-bottom: 15px; }
+
+.quote-icon {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 2rem;
+    color: rgba(13, 110, 253, 0.1);
+}
+
+.nav-btn {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #eee;
+    color: #0d6efd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.nav-btn:hover {
+    background: #0d6efd;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.2);
+}
+
+.client-img {
+    width: 60px; height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f0f7ff;
+}
+
+
+/* =========================================
+   12. SEÇÃO CONTATO — PREMIUM DARK
+========================================= */
+ 
+/* ── Layout geral ── */
+.contato-section {
+    background: linear-gradient(160deg, #001328 0%, #001e40 55%, #00091a 100%);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    /* Aumentamos o padding vertical (de 80/130px para 100/160px) */
+    padding: clamp(100px, 12vw, 160px) clamp(20px, 8vw, 80px);
+    overflow: hidden;
+}
+/* luz de fundo dourada sutil */
+.contato-section::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 70%);
+    pointer-events: none;
+}
+ 
+/* Container mais largo */
+.contato-inner {
+    max-width: 1350px; /* Aumentado de 1200px para 1350px */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: clamp(60px, 8vw, 120px); /* Mais espaço entre as colunas */
+    align-items: start;
+}
+/* ── Coluna esquerda: info ── */
+.contato-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(212,175,55,0.1);
+    border: 1px solid rgba(212,175,55,0.28);
+    color: #d4af37;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display: inline-block;
+}
+ 
+/* Título e Subtítulo Maiores */
+.contato-titulo {
+    font-size: clamp(2.2rem, 4vw, 3.5rem); /* Aumentado significativamente */
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.18;
+    margin-bottom: 20px;
+}
+
+.contato-titulo em {
+    font-style: normal;
+    background: linear-gradient(135deg, #F5D37E 0%, #d4af37 50%, #8E7341 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+ 
+.contato-subtitulo {
+    font-size: 1.1rem; /* Aumentado */
+    line-height: 1.7;
+    margin-bottom: 50px;
+    max-width: 450px; /* Permitindo texto mais largo */
+}
+ 
+/* ── Canais de contato ── */
+.contato-canais {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+ 
+.contato-canal {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    text-decoration: none !important;
+    transition: all 0.28s ease;
+    color: inherit;
+}
+.contato-canal:hover {
+    background: rgba(212,175,55,0.08);
+    border-color: rgba(212,175,55,0.3);
+    transform: translateX(5px);
+}
+.contato-canal--static { cursor: default; }
+.contato-canal--static:hover {
+    transform: none;
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.08);
+}
+ 
+.canal-icon {
+    width: 44px; height: 44px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+.canal-whatsapp  { background: #25D366; }
+.canal-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.canal-email     { background: linear-gradient(135deg, #0d6efd, #1a9cff); }
+.canal-endereco  { background: rgba(212,175,55,0.18); color: #d4af37 !important; border: 1px solid rgba(212,175,55,0.25); }
+ 
+.canal-dados { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+ 
+.canal-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #5a7fa0;
+    margin-bottom: 2px;
+}
+.canal-valor {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #d0dde8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+ 
+.canal-arrow {
+    color: rgba(212,175,55,0.4);
+    font-size: 0.8rem;
+    transition: transform 0.25s ease, color 0.25s ease;
+    flex-shrink: 0;
+}
+.contato-canal:hover .canal-arrow {
+    transform: translateX(4px);
+    color: #d4af37;
+}
+ 
+/* ── Formulário ── */
+.contato-form-col {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 28px;
+    padding: clamp(32px, 4vw, 56px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+    padding: clamp(40px, 5vw, 64px); /* Aumentado o padding interno do formulário */
+    border-radius: 32px;
+}
+ 
+/* linha dourada topo */
+.contato-form-col::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 12%; right: 12%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37 35%, #f5d37e 65%, transparent);
+    opacity: 0.55;
+    border-radius: 0 0 4px 4px;
+}
+ 
+.contato-form { display: flex; flex-direction: column; gap: 20px; }
+ 
+.cform-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+ 
+.cform-group { display: flex; flex-direction: column; gap: 8px; }
+ 
+.cform-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #8fa8c0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.cform-label i { color: #d4af37; margin-right: 5px; }
+.cform-req { color: #d4af37; }
+ 
+.cform-input {
+background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    color: #e8edf2;
+    font-size: 1.05rem; /* Fonte da digitação maior */
+    padding: 16px 20px; /* Campos mais "altos" e gordinhos */
+    transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    width: 100%;
+    outline: none;
+    -webkit-appearance: none;
+}
+.cform-input::placeholder { color: #415a72; }
+.cform-input:focus {
+    border-color: #d4af37;
+    background: rgba(212,175,55,0.05);
+    box-shadow: 0 0 0 3px rgba(212,175,55,0.12);
+}
+ 
+.cform-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23d4af37' d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 12px;
+    padding-right: 40px;
+}
+.cform-select option { background: #001a3a; color: #e8edf2; }
+ 
+.cform-textarea {
+    resize: vertical;
+    min-height: 120px;
+    max-height: 260px;
+    line-height: 1.6;
+}
+ 
+/* ── Botão enviar ── */
+.cform-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 17px 24px;
+    background: linear-gradient(135deg, #25D366 0%, #1da855 100%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.28s ease;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.25);
+    position: relative;
+    overflow: hidden;
+    margin-top: 4px;
+}
+.cform-btn i:first-child { font-size: 1.3rem; }
+.cform-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(37,211,102,0.35);
+}
+.cform-btn-arrow {
+    margin-left: auto;
+    opacity: 0.7;
+    transition: transform 0.25s ease;
+}
+.cform-btn:hover .cform-btn-arrow { transform: translateX(4px); opacity: 1; }
+ 
+.cform-disclaimer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #415a72;
+    margin: 0;
+}
+.cform-disclaimer i { color: #d4af37; margin-right: 4px; }
+ 
+/* ── Responsivo ── */  
+@media (max-width: 991px) {
+    .contato-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .contato-subtitulo { max-width: 100%; }
+}
+
+@media (max-width: 575px) {
+    /* Padding corrigido para manter o respiro nas laterais no celular */
+    .contato-section { padding: 64px 20px; }
+    
+    .cform-row { grid-template-columns: 1fr; gap: 16px; }
+    .contato-form-col { padding: 28px 18px; border-radius: 20px; }
+    .canal-valor { font-size: 0.82rem; }
+}
+ 
+
+/* =========================================
+   13. FOOTER
+========================================= */
+.footer-premium {
+    background-color: #001328;
+    color: #ffffff;
+    padding: 80px 0 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-logo {
+    max-height: 60px !important;
+    width: auto;
+    display: block;
+    filter: none !important;
+    -webkit-filter: none !important;
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+.footer-logo:hover { transform: scale(1.05); }
+
+@media (max-width: 768px) {
+    .footer-logo { max-height: 70px !important; margin: 0 auto 25px; }
+    .footer-social-icons { justify-content: center; }
+}
+
+.footer-description { color: #a0aec0; font-size: 0.95rem; line-height: 1.6; }
+
+.footer-title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.footer-links { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+.footer-links a:hover { color: #0d6efd; padding-left: 5px; }
+
+.footer-contact { list-style: none; padding: 0; }
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #a0aec0;
+    font-size: 0.95rem;
+}
+.footer-contact i { color: #0d6efd; margin-right: 12px; width: 20px; text-align: center; }
+
+.footer-divider { margin: 50px 0 30px; border-color: rgba(255, 255, 255, 0.05); }
+
+.footer-bottom { font-size: 0.85rem; color: #718096; }
+
+.footer-social-icons { display: flex; gap: 15px; justify-content: flex-end; }
+.footer-social-icons a {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-social-icons a:hover {
+    background: #0d6efd;
+    transform: translateY(-3px);
+    border-color: #0d6efd;
+}
+
+
+/* =========================================
+   14. UTILITÁRIOS FINAIS
+========================================= */
+.premium-form,
+.contact-link-card,
+.testimonial-card,
+.service-card,
+.Diferenciais-card,
+.diferenciais-card,
+.stat-card-custom {
+    max-width: 100%;
 }
