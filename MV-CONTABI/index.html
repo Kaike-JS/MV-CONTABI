@@ -4,33 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MV Contabi - Assessoria Contábil</title>
-
+    <link rel="icon" href="assets/mvcontabi.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- =========================================
+     NAVBAR
+========================================= -->
 <nav id="sobre" class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand logo-container" href="#">
             <img src="assets/mvcontabi.png" alt="MV Contabi" style="border-radius: 10px;">
         </a>
-        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-center"> 
+            <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a class="nav-link" href="#sobre">Início</a></li>
                 <li class="nav-item"><a class="nav-link" href="#servicos">Especialidades</a></li>
-                <li class="nav-item"><a class="nav-link" href="#time">história</a></li>
+                <li class="nav-item"><a class="nav-link" href="#time">História</a></li>
                 <li class="nav-item"><a class="nav-link" href="#Diferenciais">Diferenciais</a></li>
                 <li class="nav-item"><a class="nav-link" href="#depoimentos">Feedback</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
-                
-              <li class="nav-item">
+                <li class="nav-item">
                     <a href="https://wa.me/5574981080549" class="btn btn-whatsapp-nav fw-bold shadow-lg text-uppercase fs-6 d-inline-flex align-items-center">
                         Falar no WhatsApp <i class="fa-brands fa-whatsapp ms-2 fs-4"></i>
                     </a>
@@ -40,60 +42,116 @@
     </div>
 </nav>
 
+
+<!-- =========================================
+     HEADER — HERO
+========================================= -->
 <header class="hero">
-<section class="hero-section">
-    <div class="hero-left fade-in">
-        <div class="hero-tag">
-            <span class="hero-tag-dot"></span>
-            Escritório premiado — Caldeirão Grande/BA
-        </div>
-        
-        <h1 class="display-5 fw-bold text-light mb-4">
-            Contabilidade <em>simples e eficiente</em> para o seu negócio.
-        </h1>
-        
-        <p class="fs-4 mb-4">
-            A MV Contabi oferece soluções contábeis completas para MEI, profissionais liberais e empresas que buscam crescimento com segurança.
-        </p>
 
-        <div class="hero-actions">
-            <a href="https://wa.me/5574981080549" class="btn-gold" target="_blank">
-                Solicitar Orçamento <i class="fas fa-file-invoice-dollar ms-2"></i>
-            </a>
-        </div>
-    </div>
+    <!-- Hero principal: texto + card -->
+    <section class="hero-section">
 
-    <div class="hero-right hero-imagem fade-in">
-        <div class="hero-card">
-            <div class="badge-scan">
-                <small>STATUS</small>
-                <strong>● SUA CONTABILIDADE DE CONFIANÇA</strong>
+        <!-- Esquerda: copy -->
+        <div class="hero-left fade-in">
+            <div class="hero-tag">
+                <span class="hero-tag-dot"></span>
+                Escritório premiado — Caldeirão Grande/BA
             </div>
 
-            <div class="mv-card-img-wrap">
-                <img src="assets/venicius.jpeg" alt="Marcos Venicius" class="mv-card-img">
-                <div class="mv-scan-line"></div>
-            </div>
+            <h1 class="display-5 fw-bold text-light mb-4">
+                Contabilidade <em>simples e eficiente</em> para o seu negócio.
+            </h1>
 
-            <div class="hero-stats">
-                <div class="stat-mini">
-                    <strong>+200</strong>
-                    <span>Clientes</span>
-                </div>
-                <div class="stat-mini">
-                    <strong>8+</strong>
-                    <span>Anos</span>
-                </div>
-                <div class="stat-mini">
-                    <strong>2x</strong>
-                    <span>Premiado</span>
-                </div>
+            <p class="fs-4 mb-4">
+                A MV Contabi oferece soluções contábeis completas para MEI, profissionais liberais e empresas que buscam crescimento com segurança.
+            </p>
+
+            <div class="hero-actions">
+                <a href="https://wa.me/5574981080549" class="btn-gold" target="_blank">
+                    Solicitar Orçamento <i class="fas fa-file-invoice-dollar ms-2"></i>
+                </a>
             </div>
         </div>
-    </div>
-</section>
 
-    <section id="diferenciais" class="w-100 py-3 rounded mt-0 bg-transparent" style="background: transparent; position: absolute; bottom: 0; left: 0;">
+        <!-- Direita: card com flip -->
+        <div class="hero-right hero-imagem fade-in">
+            <div class="hero-card">
+                <div class="mv-card-image-area">
+
+                    <!-- Wrapper 3D flip -->
+                    <div class="mv-card-img-wrap">
+
+                        <!-- FRENTE: foto do Marcos Venicius -->
+                        <div class="mv-card-face mv-card-front">
+                            <img src="assets/venicius.jpeg" alt="Marcos Venicius" class="mv-card-img">
+                        </div>
+
+                        <!-- VERSO: perfil profissional redesenhado -->
+                        <div class="mv-card-face mv-card-back">
+
+                            <!-- Cabeçalho com avatar + nome -->
+                            <div class="mv-back-header">
+                                <img src="assets/venicius.jpeg" alt="Marcos Venicius" class="mv-back-avatar">
+                                <div>
+                                    <p class="mv-back-name">Marcos Venicius</p>
+                                    <p class="mv-back-role">Contador &amp; Fundador · CRC/BA</p>
+                                </div>
+                            </div>
+
+                            <div class="mv-back-divider"></div>
+
+                            <!-- Conquistas e diferenciais -->
+                            <ul class="mv-back-items">
+                                <li>
+                                    <span class="mv-back-icon"><i class="fa-solid fa-trophy"></i></span>
+                                    <span><strong>2x Premiado</strong> — Melhor Escritório de Contabilidade em Caldeirão Grande/BA</span>
+                                </li>
+                                <li>
+                                    <span class="mv-back-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                                    <span>Especialista em <strong>MEI e Planejamento Fiscal</strong></span>
+                                </li>
+                            </ul>
+
+                            <div class="mv-back-divider"></div>
+
+                            <!-- Badge de premiação -->
+                            <div class="mv-back-badge">
+                                <i class="fa-solid fa-medal"></i>
+                                Destaque do Ano 2023
+                            </div>
+
+                        </div><!-- /mv-card-back -->
+
+                    </div><!-- /mv-card-img-wrap -->
+
+                    <!-- Linha de scan dourada -->
+                    <div class="mv-scan-line"></div>
+
+                </div><!-- /mv-card-image-area -->
+
+                <!-- Estatísticas abaixo do card -->
+                <div class="hero-stats">
+                    <div class="stat-mini">
+                        <strong>+200</strong>
+                        <span>Clientes</span>
+                    </div>
+                    <div class="stat-mini">
+                        <strong>8+</strong>
+                        <span>Anos</span>
+                    </div>
+                    <div class="stat-mini">
+                        <strong>2x</strong>
+                        <span>Premiado</span>
+                    </div>
+                </div>
+
+            </div><!-- /hero-card -->
+        </div><!-- /hero-right -->
+
+    </section><!-- /hero-section -->
+
+    <!-- Faixa de diferenciais rápidos (base do hero) -->
+    <section id="diferenciais" class="w-100 py-3 rounded mt-0 bg-transparent">
         <div class="container text-center">
             <div class="row g-0 justify-content-center align-items-center">
                 <article class="col-auto diferenciais-col">
@@ -123,522 +181,517 @@
             </div>
         </div>
     </section>
-</header>
 
+</header><!-- /header.hero -->
+
+
+<!-- =========================================
+     MAIN — CONTEÚDO PRINCIPAL
+========================================= -->
 <main class="container">
-<section id="servicos" class="fade-in delay-1">
-    <div class="container">
-        <!-- Header da Seção -->
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-8 text-center">
-                <span class="section-subtitle text-primary d-block mb-2">Nossas Especialidades</span>
-                <h2 class="display-5 fw-bold text-dark mb-3">Soluções completas para cada etapa do seu negócio</h2>
-                <p class="lead text-muted">Oferecemos suporte contábil e fiscal estratégico para garantir a saúde financeira e o crescimento sustentável da sua empresa.</p>
-            </div>
-        </div>
 
-        <div class="row g-4">
-    <!-- Card 1 -->
-    <article class="col-md-6 col-lg-3 fade-in delay-1">
-        <div class="card h-100 border-0 shadow-sm service-card p-3">
-            <div class="card-body text-center d-flex flex-column">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-briefcase fa-2x"></i>
-                </div>
-                <h5 class="card-title fw-bold mb-3">Abertura de Empresa</h5>
-                <p class="card-text text-secondary mb-4 flex-grow-1">Legalização ágil e segura para transformar sua ideia em um negócio sólido.</p>
-                <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20abrir%20uma%20empresa%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20este%20servi%C3%A7o." 
-                   target="_blank" class="text-primary text-decoration-none link-hover-custom justify-content-center">
-                    Saiba mais <i class="fa-solid fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-    </article>
-
-    <!-- Card 2 -->
-    <article class="col-md-6 col-lg-3 fade-in delay-2">
-        <div class="card h-100 border-0 shadow-sm service-card p-3">
-            <div class="card-body text-center d-flex flex-column">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-calculator fa-2x"></i>
-                </div>
-                <h5 class="card-title fw-bold mb-3">Gestão Mensal</h5>
-                <p class="card-text text-secondary mb-4 flex-grow-1">Contabilidade completa e conformidade fiscal para sua tranquilidade.</p>
-                <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Gest%C3%A3o%20Mensal%20e%20como%20funciona%20a%20contabilidade%20para%20minha%20empresa." 
-                   target="_blank" class="text-primary text-decoration-none link-hover-custom justify-content-center">
-                    Saiba mais <i class="fa-solid fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-    </article>
-
-    <!-- Card 3 -->
-    <article class="col-md-6 col-lg-3 fade-in delay-3">
-        <div class="card h-100 border-0 shadow-sm service-card p-3">
-            <div class="card-body text-center d-flex flex-column">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-file-invoice-dollar fa-2x"></i>
-                </div>
-                <h5 class="card-title fw-bold mb-3">Imposto de Renda</h5>
-                <p class="card-text text-secondary mb-4 flex-grow-1">Planejamento e entrega da declaração com foco no menor impacto tributário.</p>
-                <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20meu%20Imposto%20de%20Renda%20e%20gostaria%20de%20um%20or%C3%A7amento." 
-                   target="_blank" class="text-primary text-decoration-none link-hover-custom justify-content-center">
-                    Saiba mais <i class="fa-solid fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-    </article>
-
-    <!-- Card 4 -->
-    <article class="col-md-6 col-lg-3 fade-in delay-4">
-        <div class="card h-100 border-0 shadow-sm service-card p-3">
-            <div class="card-body text-center d-flex flex-column">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-chart-line fa-2x"></i>
-                </div>
-                <h5 class="card-title fw-bold mb-3">Consultoria BPO</h5>
-                <p class="card-text text-secondary mb-4 flex-grow-1">Análise estratégica de indicadores para maximizar a lucratividade.</p>
-                <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Consultoria%20BPO%20e%20gostaria%20de%20entender%20como%20pode%20ajudar%20meu%20neg%C3%B3cio." 
-                   target="_blank" class="text-primary text-decoration-none link-hover-custom justify-content-center">
-                    Saiba mais <i class="fa-solid fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-    </article>
-</div>
-    </div>
-</section><br><br>
-      
-<section id="time" class="fade-in">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            
-            <!-- Lado Esquerdo: Composição de Imagens -->
-           <div class="col-lg-6">
-                <!-- Adicionamos o onclick para alternar a classe 'active' -->
-                <div class="image-stack" id="photoStack" onclick="toggleStack()">
-                    <img src="assets/venicius.jpeg" alt="Venicius - MV Contabi" class="stack-img img-1">
-                    <img src="assets/mv1.jpeg" alt="Time - MV Contabi" class="stack-img img-2">
+    <!-- ── Serviços ────────────────────────── -->
+    <section id="servicos" class="fade-in delay-1">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <span class="section-subtitle text-primary d-block mb-2">Nossas Especialidades</span>
+                    <h2 class="display-5 fw-bold text-dark mb-3">Soluções completas para cada etapa do seu negócio</h2>
+                    <p class="lead text-muted">Oferecemos suporte contábil e fiscal estratégico para garantir a saúde financeira e o crescimento sustentável da sua empresa.</p>
                 </div>
             </div>
 
-            <!-- Lado Direito: Conteúdo -->
-            <div class="col-lg-6">
-                <div class="ps-lg-5">
-                    <span class="about-badge mb-3">Nossa História</span>
-                    <h2 class="display-5 fw-bold text-dark mb-4">
-                        Mais que uma contabilidade, somos <span class="text-primary">parceiros</span> do seu sucesso.
-                    </h2>
-                    <p class="text-muted fs-5 mb-4">
-                        A MV Contabi nasceu com o propósito de simplificar a contabilidade e ser um aliado estratégico. Unimos tecnologia de ponta e atendimento humanizado.
-                    </p>
-
-                    <!-- Estatísticas em Cards -->
-                    <div class="row g-3">
-                        <div class="col-4">
-                            <div class="stat-card-custom">
-                                <div class="stat-val fw-bold">+200</div>
-                                <div class="stat-desc">CLIENTES</div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="stat-card-custom">
-                                <div class="stat-val fw-bold">+ 8 anos</div>
-                                <div class="stat-desc">MERCADO</div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="stat-card-custom">
-                                <div class="stat-val fw-bold">100%</div>
-                                <div class="stat-desc">COMPROMETIMENTO</div>
-                            </div>
-                        </div>
-                    </div>
-
-                   <div class="mt-5">
-                        <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20a%20metodologia%20de%20trabalho%20da%20MV%20Contabi." 
-                        target="_blank" class="btn btn-primary btn-lg px-4 py-3 fw-bold shadow">
-                            Conheça nossa metodologia
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<section id="Diferenciais" class="fade-in delay-2">
-    <div class="container text-center">
-        <span class="about-badge mb-4">Nossos Diferenciais</span>
-        
-        <h2 class="text-light display-5 fw-bold mb-5 mt-2">
-            Por que escolher a <span class="text-primary">MV Contabi?</span>
-        </h2>
-        
-        <!-- O justify-content-center garante que se sobrar espaço, os cards fiquem no meio -->
-        <div class="row g-4 justify-content-center">
-            
-            <!-- Card 1 - col-lg-3 faz com que 4 cards ocupem as 12 colunas (12/3 = 4) -->
-            <div class="col-lg-3 col-md-6 d-flex">
-                <div class="card h-100 Diferenciais-card w-100" >
-                    <div class="card-body">
-                        <i class="fa-solid fa-headset fa-3x"></i>
-                        <h5 class="card-title text-light">Atendimento Personalizado</h5>
-                        <p class="card-text">Cada cliente é único. Criamos estratégias específicas que se moldam ao seu negócio.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 Diferenciais-card">
-                    <div class="card-body">
-                        <i class="fa-solid fa-square-poll-vertical fa-3x"></i>
-                        <h5 class="card-title text-light">Tecnologia de Ponta</h5>
-                        <p class="card-text">Processos 100% digitais e transparentes com as ferramentas mais seguras do mercado.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 Diferenciais-card">
-                    <div class="card-body">
-                        <i class="fa-solid fa-eye fa-3x mb-3 text-primary"></i> <!-- Ícone de olho combina mais com transparência -->
-                        <h5 class="card-title text-light">Transparência</h5>
-                        <p class="card-text">Comunicação clara, ética profissional e relatórios detalhados ao seu alcance.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card h-100 Diferenciais-card">
-                    <div class="card-body">
-                        <i class="fa-solid fa-hand-holding-dollar fa-3x"></i> <!-- Ícone de preço/valor -->
-                        <h5 class="card-title text-light">Preço Justo</h5>
-                        <p class="card-text">Planos acessíveis e escaláveis que cabem no orçamento da sua empresa.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<section id="depoimentos" class="fade-in delay-3">
-    <div class="container">
-        <!-- Header -->
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-8 text-center">
-                <span class="about-badge mb-3">Feedback Real</span>
-                <h2 class="display-5 fw-bold text-dark mb-3">Quem confia na MV Contabi</h2>
-                <p class="lead text-muted">A satisfação dos nossos parceiros é o nosso maior indicador de sucesso.</p>
-            </div>
-        </div>
-
-        <!-- Carrossel -->
-      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-
-        <!-- Slide 1 (Cards 1, 2 e 3) -->
-        <div class="carousel-item active">
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4">
                 <!-- Card 1 -->
-                <div class="col-12 col-md-4">
-                    <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
-                        <i class="fa-solid fa-quote-right quote-icon"></i>
-                        <div class="card-body d-flex flex-column">
-                            <div class="stars text-warning mb-2">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text text-secondary mb-4">"A MV Contabi transformou a gestão da minha empresa. Atendimento ágil e soluções personalizadas que realmente funcionam."</p>
-                            <div class="d-flex align-items-center mt-auto">
-                                <img src="assets/cliente1.jpg" alt="Renato Ramos" class="client-img me-3">
-                                <div>
-                                    <h6 class="mb-0 fw-bold">Renato Ramos</h6>
-                                    <small class="text-primary fw-600">Representante de marcas</small>
+                <article class="col-md-6 col-lg-3 fade-in delay-1">
+                    <div class="card h-100 border-0 shadow-sm service-card p-3">
+                        <div class="card-body text-center d-flex flex-column">
+                            <div class="icon-wrapper"><i class="fa-solid fa-briefcase fa-2x"></i></div>
+                            <h5 class="card-title fw-bold mb-3">Abertura de Empresa</h5>
+                            <p class="card-text text-secondary mb-4 flex-grow-1">Legalização ágil e segura para transformar sua ideia em um negócio sólido.</p>
+                            <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20abrir%20uma%20empresa%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20este%20servi%C3%A7o."
+                               target="_blank" class="text-primary text-decoration-none link-hover-custom justify-content-center">
+                                Saiba mais <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="col-md-6 col-lg-3 fade-in delay-2">
+                    <div class="card h-100 border-0 shadow-sm service-card p-3">
+                        <div class="card-body text-center d-flex flex-column">
+                            <div class="icon-wrapper"><i class="fa-solid fa-calculator fa-2x"></i></div>
+                            <h5 class="card-title fw-bold mb-3">Gestão Mensal</h5>
+                            <p class="card-text text-secondary mb-4 flex-grow-1">Contabilidade completa e conformidade fiscal para sua tranquilidade.</p>
+                            <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Gest%C3%A3o%20Mensal%20e%20como%20funciona%20a%20contabilidade%20para%20minha%20empresa."
+                               target="_blank" class="text-primary text-decoration-none link-hover-custom justify-content-center">
+                                Saiba mais <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="col-md-6 col-lg-3 fade-in delay-3">
+                    <div class="card h-100 border-0 shadow-sm service-card p-3">
+                        <div class="card-body text-center d-flex flex-column">
+                            <div class="icon-wrapper"><i class="fa-solid fa-file-invoice-dollar fa-2x"></i></div>
+                            <h5 class="card-title fw-bold mb-3">Imposto de Renda</h5>
+                            <p class="card-text text-secondary mb-4 flex-grow-1">Planejamento e entrega da declaração com foco no menor impacto tributário.</p>
+                            <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20meu%20Imposto%20de%20Renda%20e%20gostaria%20de%20um%20or%C3%A7amento."
+                               target="_blank" class="text-primary text-decoration-none link-hover-custom justify-content-center">
+                                Saiba mais <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="col-md-6 col-lg-3 fade-in delay-4">
+                    <div class="card h-100 border-0 shadow-sm service-card p-3">
+                        <div class="card-body text-center d-flex flex-column">
+                            <div class="icon-wrapper"><i class="fa-solid fa-chart-line fa-2x"></i></div>
+                            <h5 class="card-title fw-bold mb-3">Consultoria BPO</h5>
+                            <p class="card-text text-secondary mb-4 flex-grow-1">Análise estratégica de indicadores para maximizar a lucratividade.</p>
+                            <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Consultoria%20BPO%20e%20gostaria%20de%20entender%20como%20pode%20ajudar%20meu%20neg%C3%B3cio."
+                               target="_blank" class="text-primary text-decoration-none link-hover-custom justify-content-center">
+                                Saiba mais <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section><br><br>
+
+
+    <!-- ── História / Time ─────────────────── -->
+    <section id="time" class="fade-in">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <!-- Composição de imagens -->
+                <div class="col-lg-6">
+                    <div class="image-stack" id="photoStack" onclick="toggleStack()">
+                        <img src="assets/venicius.jpeg" alt="Venicius - MV Contabi" class="stack-img img-1">
+                        <img src="assets/mv1.jpeg"      alt="Time - MV Contabi"     class="stack-img img-2">
+                    </div>
+                </div>
+
+                <!-- Conteúdo textual -->
+                <div class="col-lg-6">
+                    <div class="ps-lg-5">
+                        <span class="about-badge mb-3">Nossa História</span>
+                        <h2 class="display-5 fw-bold text-dark mb-4">
+                            Mais que uma contabilidade, somos <span class="text-primary">parceiros</span> do seu sucesso.
+                        </h2>
+                        <p class="text-muted fs-5 mb-4">
+                            A MV Contabi nasceu com o propósito de simplificar a contabilidade e ser um aliado estratégico. Unimos tecnologia de ponta e atendimento humanizado.
+                        </p>
+
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="stat-card-custom">
+                                    <div class="stat-val fw-bold">+200</div>
+                                    <div class="stat-desc">CLIENTES</div>
                                 </div>
                             </div>
+                            <div class="col-4">
+                                <div class="stat-card-custom">
+                                    <div class="stat-val fw-bold">+8 anos</div>
+                                    <div class="stat-desc">MERCADO</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-card-custom">
+                                    <div class="stat-val fw-bold">100%</div>
+                                    <div class="stat-desc">COMPROMETIMENTO</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <a href="https://wa.me/5574981080549?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20a%20metodologia%20de%20trabalho%20da%20MV%20Contabi."
+                               target="_blank" class="btn btn-primary btn-lg px-4 py-3 fw-bold shadow">
+                                Conheça nossa metodologia
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ── Diferenciais (main) ─────────────── -->
+    <section id="Diferenciais" class="fade-in delay-2">
+        <div class="container text-center">
+            <span class="about-badge mb-4">Nossos Diferenciais</span>
+
+            <h2 class="text-light display-5 fw-bold mb-5 mt-2">
+                Por que escolher a <span class="text-primary">MV Contabi?</span>
+            </h2>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Card 1 -->
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <div class="card h-100 Diferenciais-card w-100">
+                        <div class="card-body">
+                            <i class="fa-solid fa-headset fa-3x"></i>
+                            <h5 class="card-title text-light">Atendimento Personalizado</h5>
+                            <p class="card-text">Cada cliente é único. Criamos estratégias específicas que se moldam ao seu negócio.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="col-12 col-md-4">
-                    <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
-                        <i class="fa-solid fa-quote-right quote-icon"></i>
-                        <div class="card-body d-flex flex-column">
-                            <div class="stars text-warning mb-2">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text text-secondary mb-4">"Profissionais extremamente qualificados. A segurança tributária que eles passam nos permite focar apenas no nosso crescimento."</p>
-                            <div class="d-flex align-items-center mt-auto">
-                                <img src="assets/cliente2.jpg" alt="Pedro Guilherme" class="client-img me-3">
-                                <div>
-                                    <h6 class="mb-0 fw-bold">Pedro Guilherme</h6>
-                                    <small class="text-primary fw-600">Advogado e empresário</small>
-                                </div>
-                            </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 Diferenciais-card">
+                        <div class="card-body">
+                            <i class="fa-solid fa-square-poll-vertical fa-3x"></i>
+                            <h5 class="card-title text-light">Tecnologia de Ponta</h5>
+                            <p class="card-text">Processos 100% digitais e transparentes com as ferramentas mais seguras do mercado.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="col-12 col-md-4">
-                    <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
-                        <i class="fa-solid fa-quote-right quote-icon"></i>
-                        <div class="card-body d-flex flex-column">
-                            <div class="stars text-warning mb-2">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text text-secondary mb-4">"Finalmente uma contabilidade que fala a língua do empreendedor. Processos digitais e muita clareza nos relatórios."</p>
-                            <div class="d-flex align-items-center mt-auto">
-                                <img src="assets/cliente3.jpg" alt="Karina" class="client-img me-3">
-                                <div>
-                                    <h6 class="mb-0 fw-bold">Karina</h6>
-                                    <small class="text-primary fw-600">Fundadora - Psi Karina</small>
-                                </div>
-                            </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 Diferenciais-card">
+                        <div class="card-body">
+                            <i class="fa-solid fa-eye fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title text-light">Transparência</h5>
+                            <p class="card-text">Comunicação clara, ética profissional e relatórios detalhados ao seu alcance.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Slide 2 (Cards 4, 5 e 6) -->
-        <div class="carousel-item">
-            <div class="row g-4 justify-content-center">
                 <!-- Card 4 -->
-                <div class="col-12 col-md-4">
-                    <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
-                        <i class="fa-solid fa-quote-right quote-icon"></i>
-                        <div class="card-body d-flex flex-column">
-                            <div class="stars text-warning mb-2">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text text-secondary mb-4">"O suporte para a abertura da minha empresa foi impecável. Sem burocracia e com muita transparência em cada etapa."</p>
-                            <div class="d-flex align-items-center mt-auto">
-                                <img src="assets/cliente4.jpg" alt="Lindiomar" class="client-img me-3">
-                                <div>
-                                    <h6 class="mb-0 fw-bold">Lindiomar</h6>
-                                    <small class="text-primary fw-600">Nego Construções Prediais</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="col-12 col-md-4">
-                    <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
-                        <i class="fa-solid fa-quote-right quote-icon"></i>
-                        <div class="card-body d-flex flex-column">
-                            <div class="stars text-warning mb-2">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text text-secondary mb-4">"Contabilidade de confiança é base para qualquer negócio. Recomendo a MV Contabi pela ética e competência."</p>
-                            <div class="d-flex align-items-center mt-auto">
-                                <img src="assets/cliente5.jpg" alt="Amilson Lima" class="client-img me-3">
-                                <div>
-                                    <h6 class="mb-0 fw-bold">Amilson Lima</h6>
-                                    <small class="text-primary fw-600">Doutor Amilson Lima</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="col-12 col-md-4">
-                    <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
-                        <i class="fa-solid fa-quote-right quote-icon"></i>
-                        <div class="card-body d-flex flex-column">
-                            <div class="stars text-warning mb-2">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text text-secondary mb-4">"A MV Contabi nos traz uma segurança extrema, sempre em conformidade com a receita federal."</p>
-                            <div class="d-flex align-items-center mt-auto">
-                                <img src="assets/cliente6.jpg" alt="Adailson" class="client-img me-3">
-                                <div>
-                                    <h6 class="mb-0 fw-bold">Adailson José Angelim</h6>
-                                    <small class="text-primary fw-600">Grupo Sol</small>
-                                </div>
-                            </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 Diferenciais-card">
+                        <div class="card-body">
+                            <i class="fa-solid fa-hand-holding-dollar fa-3x"></i>
+                            <h5 class="card-title text-light">Preço Justo</h5>
+                            <p class="card-text">Planos acessíveis e escaláveis que cabem no orçamento da sua empresa.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Slide 3 (Restante dos Cards) -->
-        <div class="carousel-item">
-            <div class="row g-4 justify-content-center">
-                <!-- Card 7 -->
-                <div class="col-12 col-md-4">
-                    <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
-                        <i class="fa-solid fa-quote-right quote-icon"></i>
-                        <div class="card-body d-flex flex-column">
-                            <div class="stars text-warning mb-2">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+    <!-- ── Depoimentos ────────────────────── -->
+    <section id="depoimentos" class="fade-in delay-3">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <span class="about-badge mb-3">Feedback Real</span>
+                    <h2 class="display-5 fw-bold text-dark mb-3">Quem confia na MV Contabi</h2>
+                    <p class="lead text-muted">A satisfação dos nossos parceiros é o nosso maior indicador de sucesso.</p>
+                </div>
+            </div>
+
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-12 col-md-4">
+                                <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
+                                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="stars text-warning mb-2">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="card-text text-secondary mb-4">"A MV Contabi transformou a gestão da minha empresa. Atendimento ágil e soluções personalizadas que realmente funcionam."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <img src="assets/cliente1.jpg" alt="Renato Ramos" class="client-img me-3">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold">Renato Ramos</h6>
+                                                <small class="text-primary fw-600">Representante de marcas</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="card-text text-secondary mb-4">"Graças a MV Contabi, minhas empresas estão estáveis e com um planejamento excelente."</p>
-                            <div class="d-flex align-items-center mt-auto">
-                                <img src="assets/cliente7.jpg" alt="Márcio" class="client-img me-3">
-                                <div>
-                                    <h6 class="mb-0 fw-bold">Márcio</h6>
-                                    <small class="text-primary fw-600">A Fazendinha Mix e Agropec</small>
+                            <div class="col-12 col-md-4">
+                                <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
+                                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="stars text-warning mb-2">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="card-text text-secondary mb-4">"Profissionais extremamente qualificados. A segurança tributária que eles passam nos permite focar apenas no nosso crescimento."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <img src="assets/cliente2.jpg" alt="Pedro Guilherme" class="client-img me-3">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold">Pedro Guilherme</h6>
+                                                <small class="text-primary fw-600">Advogado e empresário</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
+                                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="stars text-warning mb-2">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="card-text text-secondary mb-4">"Finalmente uma contabilidade que fala a língua do empreendedor. Processos digitais e muita clareza nos relatórios."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <img src="assets/cliente3.jpg" alt="Karina" class="client-img me-3">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold">Karina</h6>
+                                                <small class="text-primary fw-600">Fundadora - Psi Karina</small>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Card 8 -->
-                <div class="col-12 col-md-4">
-                    <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
-                        <i class="fa-solid fa-quote-right quote-icon"></i>
-                        <div class="card-body d-flex flex-column">
-                            <div class="stars text-warning mb-2">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-12 col-md-4">
+                                <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
+                                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="stars text-warning mb-2">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="card-text text-secondary mb-4">"O suporte para a abertura da minha empresa foi impecável. Sem burocracia e com muita transparência em cada etapa."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <img src="assets/cliente4.jpg" alt="Lindiomar" class="client-img me-3">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold">Lindiomar</h6>
+                                                <small class="text-primary fw-600">Nego Construções Prediais</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="card-text text-secondary mb-4">"Estoque sempre em dias, precificação conforme a atualidade do mercado, MV é excelente!"</p>
-                            <div class="d-flex align-items-center mt-auto">
-                                <img src="assets/cliente8.jpg" alt="Leonardo" class="client-img me-3">
-                                <div>
-                                    <h6 class="mb-0 fw-bold">Leonardo</h6>
-                                    <small class="text-primary fw-600">Erasmo Alves da Silva</small>
+                            <div class="col-12 col-md-4">
+                                <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
+                                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="stars text-warning mb-2">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="card-text text-secondary mb-4">"Contabilidade de confiança é base para qualquer negócio. Recomendo a MV Contabi pela ética e competência."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <img src="assets/cliente5.jpg" alt="Amilson Lima" class="client-img me-3">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold">Amilson Lima</h6>
+                                                <small class="text-primary fw-600">Doutor Amilson Lima</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
+                                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="stars text-warning mb-2">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="card-text text-secondary mb-4">"A MV Contabi nos traz uma segurança extrema, sempre em conformidade com a receita federal."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <img src="assets/cliente6.jpg" alt="Adailson" class="client-img me-3">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold">Adailson José Angelim</h6>
+                                                <small class="text-primary fw-600">Grupo Sol</small>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-12 col-md-4">
+                                <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
+                                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="stars text-warning mb-2">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="card-text text-secondary mb-4">"Graças a MV Contabi, minhas empresas estão estáveis e com um planejamento excelente."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <img src="assets/cliente7.jpg" alt="Márcio" class="client-img me-3">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold">Márcio</h6>
+                                                <small class="text-primary fw-600">A Fazendinha Mix e Agropec</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="card h-100 testimonial-card border-0 shadow-sm p-4 position-relative">
+                                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="stars text-warning mb-2">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <p class="card-text text-secondary mb-4">"Estoque sempre em dias, precificação conforme a atualidade do mercado, MV é excelente!"</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <img src="assets/cliente8.jpg" alt="Leonardo" class="client-img me-3">
+                                            <div>
+                                                <h6 class="mb-0 fw-bold">Leonardo</h6>
+                                                <small class="text-primary fw-600">Erasmo Alves da Silva</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /carousel-inner -->
+
+                <!-- Controles -->
+                <div class="d-flex justify-content-center gap-3 mt-5">
+                    <button class="nav-btn btn btn-dark rounded-circle" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn btn btn-dark rounded-circle" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
-
-    </div>
-
-    <!-- Controles -->
-    <div class="d-flex justify-content-center gap-3 mt-5">
-        <button class="nav-btn btn btn-dark rounded-circle" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="nav-btn btn btn-dark rounded-circle" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
-</div>
-    </div>
-</section>
+    </section><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
 
-<section id="contato" class="py-120 fade-in">
-    <div class="container">
-        <!-- Header de Contato -->
-        <div class="row justify-content-center mb-5 text-center">
-            <div class="col-lg-7">
-                <span class="about-badge mb-3">Canais de Atendimento</span>
-                <h2 class="display-5 fw-bold text-dark mb-3">Vamos iniciar uma parceria de sucesso?</h2>
-                <p class="lead text-muted">Escolha o canal de sua preferência ou preencha o formulário abaixo.</p>
+    <!-- ── Contato ────────────────────────── -->
+    <section id="contato" class="contato-section fade-in">
+        <div class="contato-inner">
+ 
+            <!-- Coluna esquerda: info -->
+            <div class="contato-info-col">
+                <span class="contato-badge">Fale Conosco</span>
+                <h2 class="contato-titulo">Vamos construir algo <em>juntos?</em></h2>
+                <p class="contato-subtitulo">Conte-nos sobre o seu negócio. Nossa equipe responde em até 24 horas úteis.</p>
+ 
+                <div class="contato-canais">
+                    <a href="https://wa.me/5574981080549" target="_blank" class="contato-canal">
+                        <span class="canal-icon canal-whatsapp"><i class="fa-brands fa-whatsapp"></i></span>
+                        <span class="canal-dados">
+                            <span class="canal-label">WhatsApp</span>
+                            <span class="canal-valor">(74) 98108-0549</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right canal-arrow"></i>
+                    </a>
+                    <a href="https://instagram.com/mvcontabi" target="_blank" class="contato-canal">
+                        <span class="canal-icon canal-instagram"><i class="fab fa-instagram"></i></span>
+                        <span class="canal-dados">
+                            <span class="canal-label">Instagram</span>
+                            <span class="canal-valor">@mvcontabi</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right canal-arrow"></i>
+                    </a>
+                    <a href="mailto:contato@mvcontabi.com.br" class="contato-canal">
+                        <span class="canal-icon canal-email"><i class="fas fa-envelope"></i></span>
+                        <span class="canal-dados">
+                            <span class="canal-label">E-mail</span>
+                            <span class="canal-valor">contato@mvcontabi.com.br</span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right canal-arrow"></i>
+                    </a>
+                    <div class="contato-canal contato-canal--static">
+                        <span class="canal-icon canal-endereco"><i class="fas fa-map-marker-alt"></i></span>
+                        <span class="canal-dados">
+                            <span class="canal-label">Endereço</span>
+                            <span class="canal-valor">Rua Hélio Correia, 1º Andar — Caldeirão Grande/BA</span>
+                        </span>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <!-- Endereços / Cards Rápidos -->
-        <div class="row justify-content-center g-4 mb-5">
-            <div class="col-md-4">
-                <a href="https://wa.me/5574981080549" target="_blank" class="contact-link-card">
-                    <div class="contact-icon-box bg-whatsapp">
+ 
+            <!-- Coluna direita: formulário -->
+            <div class="contato-form-col">
+                <form class="contato-form" id="contatoForm">
+ 
+                    <div class="cform-row">
+                        <div class="cform-group">
+                            <label class="cform-label" for="nome"><i class="fa-solid fa-user"></i> Nome Completo <span class="cform-req">*</span></label>
+                            <input type="text" id="nome" class="cform-input" placeholder="Ex: João da Silva" required>
+                        </div>
+                        <div class="cform-group">
+                            <label class="cform-label" for="email"><i class="fa-solid fa-envelope"></i> E-mail <span class="cform-req">*</span></label>
+                            <input type="email" id="email" class="cform-input" placeholder="seu@email.com.br" required>
+                        </div>
+                    </div>
+ 
+                    <div class="cform-row">
+                        <div class="cform-group">
+                            <label class="cform-label" for="telefone"><i class="fa-solid fa-phone"></i> WhatsApp <span class="cform-req">*</span></label>
+                            <input type="tel" id="telefone" class="cform-input" placeholder="(00) 00000-0000" required>
+                        </div>
+                        <div class="cform-group">
+                            <label class="cform-label" for="empresa"><i class="fa-solid fa-building"></i> Empresa</label>
+                            <input type="text" id="empresa" class="cform-input" placeholder="Nome da sua empresa">
+                        </div>
+                    </div>
+ 
+                    <div class="cform-group">
+                        <label class="cform-label" for="assunto"><i class="fa-solid fa-tag"></i> Assunto <span class="cform-req">*</span></label>
+                        <select id="assunto" class="cform-input cform-select" required>
+                            <option value="" disabled selected>Selecione o que precisa...</option>
+                            <option value="Abertura de Empresa">Abertura de Empresa</option>
+                            <option value="Contabilidade Mensal">Contabilidade Mensal (MEI / ME / LTDA)</option>
+                            <option value="Imposto de Renda">Declaração de Imposto de Renda</option>
+                            <option value="BPO Financeiro">BPO Financeiro</option>
+                            <option value="Planejamento Tributário">Planejamento Tributário</option>
+                            <option value="Consultoria">Consultoria Contábil</option>
+                            <option value="Outro">Outro assunto</option>
+                        </select>
+                    </div>
+ 
+                    <div class="cform-group">
+                        <label class="cform-label" for="mensagem"><i class="fa-solid fa-comment-dots"></i> Mensagem <span class="cform-req">*</span></label>
+                        <textarea id="mensagem" class="cform-input cform-textarea" placeholder="Descreva brevemente como podemos ajudar o seu negócio..." required></textarea>
+                    </div>
+ 
+                    <button type="submit" class="cform-btn">
                         <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <div>
-                        <p class="contact-label">WhatsApp</p>
-                        <span class="contact-info">(74) 98108-0549</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-4">
-                <a href="https://instagram.com/mvcontabi" target="_blank" class="contact-link-card">
-                    <div class="contact-icon-box bg-instagram">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <div>
-                        <p class="contact-label">Instagram</p>
-                        <span class="contact-info">@mvcontabi</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-4">
-                <a href="mailto:contato@mvcontabi.com.br" class="contact-link-card">
-                    <div class="contact-icon-box bg-primary">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div>
-                        <p class="contact-label">E-mail Corporativo</p>
-                        <span class="contact-info">contato@mvcontabi.com.br</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <!-- Formulário Premium -->
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <form class="premium-form shadow-lg">
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="nome" placeholder="Nome">
-                                <label for="nome">Nome Completo</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Email">
-                                <label for="email">E-mail Profissional</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="tel" class="form-control" id="telefone" placeholder="Telefone">
-                                <label for="telefone">Telefone / WhatsApp</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="empresa" placeholder="Empresa">
-                                <label for="empresa">Nome da Empresa (Opcional)</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" id="mensagem" placeholder="Mensagem" style="height: 150px"></textarea>
-                                <label for="mensagem">Como podemos ajudar o seu negócio?</label>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center mt-4">
-                            <button type="submit" class="btn btn-premium-submit">
-                                Enviar Mensagem <i class="fa-solid fa-paper-plane ms-2"></i>
-                            </button>
-                        </div>
-                    </div>
+                        Enviar pelo WhatsApp
+                        <span class="cform-btn-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                    </button>
+ 
+                    <p class="cform-disclaimer"><i class="fa-solid fa-lock"></i> Seus dados são protegidos e nunca compartilhados com terceiros.</p>
                 </form>
             </div>
+ 
         </div>
-    </div>
-</section>
-    </main>
+    </section>
+ 
+</main><!-- /main -->
+ 
 
- <footer class="footer-premium">
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+<footer class="footer-premium">
     <div class="container">
         <div class="row gy-5">
-            <!-- Coluna 1: Branding -->
+
+            <!-- Branding -->
             <div class="col-lg-3 col-md-6">
                 <img src="assets/mvcontabi.png" alt="MV Contabi" class="footer-logo mb-4">
                 <p class="footer-description">
@@ -646,7 +699,7 @@
                 </p>
             </div>
 
-            <!-- Coluna 2: Navegação -->
+            <!-- Navegação -->
             <div class="col-lg-2 col-md-6 offset-lg-1">
                 <h5 class="footer-title">Navegação</h5>
                 <ul class="footer-links">
@@ -658,7 +711,7 @@
                 </ul>
             </div>
 
-            <!-- Coluna 3: Serviços -->
+            <!-- Serviços -->
             <div class="col-lg-3 col-md-6">
                 <h5 class="footer-title">Serviços</h5>
                 <ul class="footer-links">
@@ -669,22 +722,13 @@
                 </ul>
             </div>
 
-            <!-- Coluna 4: Contato Direto -->
+            <!-- Contato direto -->
             <div class="col-lg-3 col-md-6">
                 <h5 class="footer-title">Contato</h5>
                 <ul class="footer-contact">
-                    <li>
-                        <i class="fas fa-phone-alt"></i>
-                        <span>(74) 98108-0549</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <span>contato@mvcontabi.com.br</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Rua Hélio Correia - 1º Andar - Caldeirão Grande - BA</span>
-                    </li>
+                    <li><i class="fas fa-phone-alt"></i><span>(74) 98108-0549</span></li>
+                    <li><i class="fas fa-envelope"></i><span>contato@mvcontabi.com.br</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i><span>Rua Hélio Correia - 1º Andar - Caldeirão Grande - BA</span></li>
                 </ul>
             </div>
         </div>
@@ -696,12 +740,10 @@
                 <div class="col-md-4 text-center text-md-start">
                     <p class="mb-0">&copy; 2026 <span class="fw-bold">MV Contabi</span>. Todos os direitos reservados.</p>
                 </div>
-
-                 <div class="col-md-4 text-center text-md-start">
+                <div class="col-md-4 text-center text-md-start">
                     <p class="mb-0"><span class="fw-bold">Desenvolvido por</span> Pedro Kaike.</p>
                 </div>
-
-                <div class="col-md-4    text-center text-md-end mt-3 mt-md-0">
+                <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
                     <div class="footer-social-icons">
                         <a href="https://instagram.com/mvcontabi" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -712,7 +754,9 @@
         </div>
     </div>
 </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="style.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="style.js"></script>
 </body>
 </html>
