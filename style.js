@@ -1,24 +1,15 @@
-// =========================================
-// FORMULÁRIO — Envio via WhatsApp
-// =========================================
-// =========================================
-// FORMULÁRIO — Envio via WhatsApp
-// =========================================
 function enviarWhatsApp(event) {
     event.preventDefault();
-
     const nome     = document.getElementById('nome').value;
     const email    = document.getElementById('email').value;
     const telefone = document.getElementById('telefone').value;
     const empresa  = document.getElementById('empresa').value;
     const assunto  = document.getElementById('assunto').value;
     const mensagem = document.getElementById('mensagem').value;
-
     if (!nome || !email || !telefone || !mensagem) {
         alert('Por favor, preencha todos os campos obrigatórios.');
         return;
     }
-
     const mensagemCompleta = encodeURIComponent(
         `Olá, sou ${nome}!\n\n` +
         `Email: ${email}\n` +
@@ -28,57 +19,36 @@ function enviarWhatsApp(event) {
         `\nMensagem:\n${mensagem}\n\n` +
         `Gostaria de mais informações sobre os serviços da MV Contabi.`
     );
-
     const url = `https://wa.me/5574981080549?text=${mensagemCompleta}`;
-
     alert('Mensagem preparada! Você será redirecionado para o WhatsApp.');
     window.open(url, '_blank');
-
-    // Limpa o formulário após envio
     ['nome', 'email', 'telefone', 'empresa', 'assunto', 'mensagem'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = el.tagName === 'SELECT' ? '' : '';
     });
 }
 
-// =========================================
-// PHOTO STACK — Toggle de imagens (#time)
-// =========================================
 function toggleStack() {
     document.getElementById('photoStack').classList.toggle('active');
 }
 
-// =========================================
-// INICIALIZAÇÃO
-// =========================================
 document.addEventListener('DOMContentLoaded', () => {
-
     document.querySelectorAll('.client-img').forEach(img => {
         const fallback = 'assets/mvcontabi.png';
-
-        img.addEventListener('error', () => {
-            if (!img.src.endsWith(fallback)) img.src = fallback;
-        });
-
-        if (img.complete && img.naturalWidth === 0) {
-            img.src = fallback;
-        }
+        img.addEventListener('error', () => { if (!img.src.endsWith(fallback)) img.src = fallback; });
+        if (img.complete && img.naturalWidth === 0) img.src = fallback;
     });
 
-    // 1. Formulário
     const form = document.querySelector('#contatoForm');
     if (form) form.addEventListener('submit', enviarWhatsApp);
 
-    // 2. Animações imediatas dos elementos do hero — independem de scroll
     const addVisible = (selector, delay = 0) => {
         const el = document.querySelector(selector);
         if (el) setTimeout(() => requestAnimationFrame(() => el.classList.add('visible')), delay);
     };
-
     addVisible('.hero-left', 300);
     addVisible('.hero-right', 500);
 
-    // 3. IntersectionObserver para demais elementos .fade-in
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -87,51 +57,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-
     document.querySelectorAll('.fade-in:not(.hero):not(.hero-left):not(.hero-right):not(.footer-premium)')
         .forEach(el => observer.observe(el));
 
     const heroCard = document.querySelector('.mv-card-img-wrap');
     if (heroCard) {
-        // Para desktop: hover
         heroCard.addEventListener('mouseenter', () => heroCard.classList.add('flipped'));
         heroCard.addEventListener('mouseleave', () => heroCard.classList.remove('flipped'));
         heroCard.addEventListener('focusin', () => heroCard.classList.add('flipped'));
         heroCard.addEventListener('focusout', () => heroCard.classList.remove('flipped'));
-
-        // Para mobile: toque para flip/unflip
         let touchTimeout;
         heroCard.addEventListener('touchstart', (e) => {
             e.preventDefault();
             heroCard.classList.add('flipped');
             clearTimeout(touchTimeout);
-            touchTimeout = setTimeout(() => heroCard.classList.remove('flipped'), 3000); // manter por 3s
+            touchTimeout = setTimeout(() => heroCard.classList.remove('flipped'), 3000);
         });
     }
 });
 
-// =========================================
-// SERVIÇOS — Filtro por categoria
-// =========================================
 (function initServicosFilter() {
     const filterBtns = document.querySelectorAll('.srv-filter-btn');
     const items = document.querySelectorAll('.srv-item');
-
     if (!filterBtns.length) return;
-
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const filter = btn.dataset.filter;
-
-            // Atualiza estado dos botões
             filterBtns.forEach(b => {
                 b.classList.remove('active');
                 b.setAttribute('aria-selected', 'false');
             });
             btn.classList.add('active');
             btn.setAttribute('aria-selected', 'true');
-
-            // Filtra os cards
             items.forEach(item => {
                 const cats = item.dataset.category || 'all';
                 const match = filter === 'all' || cats.includes(filter);
@@ -141,29 +98,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })();
 
-
-// =========================================
-// DIFERENCIAIS — Accordion expand/collapse
-// =========================================
 (function initDifAccordion() {
     const cards = document.querySelectorAll('.dif-card');
     if (!cards.length) return;
-
     cards.forEach(card => {
         const toggle = () => {
             const isOpen = card.classList.contains('open');
-            // Fecha todos
             cards.forEach(c => {
                 c.classList.remove('open');
                 c.setAttribute('aria-expanded', 'false');
             });
-            // Abre o clicado (se estava fechado)
             if (!isOpen) {
                 card.classList.add('open');
                 card.setAttribute('aria-expanded', 'true');
             }
         };
-
         card.addEventListener('click', toggle);
         card.addEventListener('keydown', e => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -174,16 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })();
 
-
-// =========================================
-// DIFERENCIAIS — Contador animado
-// =========================================
 (function initCounters() {
     const counters = document.querySelectorAll('.dif-counter');
     if (!counters.length) return;
-
-    const suffixes = { 98: '%', 200: '+', 8: (el) => el.closest('.dif-stat-item').querySelector('span').textContent.includes('Prêmio') ? 'x' : '+' };
-
     const animateCounter = (el) => {
         const target = parseInt(el.dataset.target, 10);
         const duration = 1800;
@@ -191,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const steps = duration / step;
         const increment = target / steps;
         let current = 0;
-
         const timer = setInterval(() => {
             current = Math.min(current + increment, target);
             el.textContent = Math.floor(current);
@@ -201,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, step);
     };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -210,26 +150,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.5 });
-
     counters.forEach(c => observer.observe(c));
 })();
 
-// =========================================
-// HISTÓRIA v2 — Timeline Accordion
-// =========================================
 (function initHistTimeline() {
     const items = document.querySelectorAll('.hist-tl-item');
     if (!items.length) return;
-
     items.forEach(item => {
         const btn  = item.querySelector('.hist-tl-btn');
         const body = item.querySelector('.hist-tl-body');
         if (!btn || !body) return;
-
         btn.addEventListener('click', () => {
             const isOpen = btn.getAttribute('aria-expanded') === 'true';
-
-            // Fecha todos
             items.forEach(i => {
                 const b = i.querySelector('.hist-tl-btn');
                 const d = i.querySelector('.hist-tl-body');
@@ -237,10 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (d) d.classList.remove('hist-tl-body--open');
                 i.setAttribute('data-open', 'false');
                 const icon = i.querySelector('.hist-tl-toggle-icon i');
-                if (icon) { icon.className = 'fa-solid fa-plus'; }
+                if (icon) icon.className = 'fa-solid fa-plus';
             });
-
-            // Abre o clicado (se estava fechado)
             if (!isOpen) {
                 btn.setAttribute('aria-expanded', 'true');
                 body.classList.add('hist-tl-body--open');
@@ -249,8 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (icon) icon.className = 'fa-solid fa-minus';
             }
         });
-
-        // Keyboard
         btn.addEventListener('keydown', e => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -260,23 +188,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })();
 
-
-// =========================================
-// DEPOIMENTOS v2 — Nav Dots Mobile Slider
-// =========================================
 (function initDepNav() {
     const wall    = document.getElementById('depWall');
     const prev    = document.getElementById('depPrev');
     const next    = document.getElementById('depNext');
     const dotsWrap = document.getElementById('depDots');
-
     if (!wall || !prev || !next || !dotsWrap) return;
-
     const isMobile = () => window.innerWidth <= 575;
     const cards    = () => Array.from(wall.querySelectorAll('.dep-card'));
     let currentIdx = 0;
     let dots       = [];
-
     function buildDots() {
         dotsWrap.innerHTML = '';
         dots = [];
@@ -290,92 +211,58 @@ document.addEventListener('DOMContentLoaded', () => {
             dots.push(d);
         });
     }
-
     function goTo(idx) {
         if (!isMobile()) return;
         const cs = cards();
         if (!cs.length) return;
         currentIdx = Math.max(0, Math.min(idx, cs.length - 1));
-
-        // Oculta todos, mostra o atual
         cs.forEach((c, i) => {
             c.style.display = i === currentIdx ? 'inline-block' : 'none';
         });
-
         dots.forEach((d, i) => d.classList.toggle('active', i === currentIdx));
     }
-
-    function activateMobile() {
-        buildDots();
-        goTo(0);
-    }
-
-    function deactivateMobile() {
-        cards().forEach(c => { c.style.display = ''; });
-        dotsWrap.innerHTML = '';
-    }
-
+    function activateMobile() { buildDots(); goTo(0); }
+    function deactivateMobile() { cards().forEach(c => { c.style.display = ''; }); dotsWrap.innerHTML = ''; }
     prev.addEventListener('click', () => goTo(currentIdx - 1));
     next.addEventListener('click', () => goTo(currentIdx + 1));
-
-    // Init
     if (isMobile()) activateMobile();
-
-    // Resize
     let wasM = isMobile();
     window.addEventListener('resize', () => {
         const isM = isMobile();
-        if (isM && !wasM) { activateMobile(); }
-        if (!isM && wasM) { deactivateMobile(); }
+        if (isM && !wasM) activateMobile();
+        if (!isM && wasM) deactivateMobile();
         wasM = isM;
     });
 })();
 
-// =========================================
-// TAGLINE ANIMADA — Efeito Typewriter
-// =========================================
 (function initTaglineAnimation() {
     const tagline = document.getElementById('taglineAnimation');
     if (!tagline) return;
-
     const text = tagline.textContent.trim();
-    
-    // Limpa o elemento
     tagline.innerHTML = '';
     tagline.classList.add('animated', 'typing');
-
-    // Variáveis de controle
     let charIndex = 0;
-    const charDelay = 30; // ms entre cada letra
+    const charDelay = 30;
     const textLength = text.length;
-
     function typeNextChar() {
         if (charIndex < textLength) {
             const char = text[charIndex];
             const span = document.createElement('span');
-            
             if (char === ' ') {
                 span.classList.add('tagline-space');
                 span.innerHTML = '&nbsp;';
             } else {
                 span.classList.add('tagline-char');
                 span.textContent = char;
-                // Calcula o delay progressivo
                 span.style.animationDelay = (charIndex * 0.03) + 's';
             }
-            
             tagline.appendChild(span);
             charIndex++;
-            
-            // Agenda a próxima letra
             setTimeout(typeNextChar, charDelay);
         } else {
-            // Animação completa, remove a classe typing
             tagline.classList.remove('typing');
         }
     }
-
-    // Inicia a digitação quando o elemento entra na view
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && charIndex === 0) {
@@ -384,6 +271,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.3 });
-
     observer.observe(tagline);
 })();
